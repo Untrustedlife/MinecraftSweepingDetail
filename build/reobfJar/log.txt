@@ -141,9 +141,9 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\HungerGoVroom\build\
   META-INF/mods.toml
   kubejs/
   kubejs/server_scripts/
-  kubejs/server_scripts/deplete_hunger_faster.js
+  kubejs/server_scripts/HungerGoVroom.js
   kubejs/server_scripts/server_scripts/
-  kubejs/server_scripts/server_scripts/deplete_hunger_faster.js
+  kubejs/server_scripts/server_scripts/HungerGoVroom.js
   pack.mcmeta
   untrustedlife/
   untrustedlife/mods/

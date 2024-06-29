@@ -17,9 +17,6 @@ PlayerEvents.tick(event => {
       if (player.isCrouching()){
         exhaustionToAdd+=0.01;
       }
-      if (player.isJumping()){
-        exhaustionToAdd+=0.025;
-      }
       if (player.isSwimming()){
         exhaustionToAdd+=0.01;
       }
