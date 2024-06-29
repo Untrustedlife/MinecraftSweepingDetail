@@ -19,7 +19,7 @@ public class HungerGoVroom {
 
     public HungerGoVroom() {
         // Register the setup method for modloading
-        LOGGER.info("Hunger Go Vroom Loading...");
+        LOGGER.info("Hunger Go Vroom: Thrusting passionately into your KubeJS folder...");
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     }
 
@@ -31,10 +31,10 @@ public class HungerGoVroom {
     private void copyScriptFile() {
         // Define the source and destination paths
         String minecraftDir = System.getProperty("user.dir"); // This should point to the Minecraft instance directory
-        Path destinationPath = Paths.get(minecraftDir, "kubejs", "server_scripts", "deplete_hunger_faster.js");
-        try (InputStream inputStream = getClass().getResourceAsStream("/kubejs/server_scripts/custom_script.js")) {
+        Path destinationPath = Paths.get(minecraftDir, "kubejs", "server_scripts", "HungerGoVroom.js");
+        try (InputStream inputStream = getClass().getResourceAsStream("/kubejs/server_scripts/HungerGoVroom.js")) {
             if (inputStream == null) {
-                throw new IOException("Script file not found in resources: /kubejs/server_scripts/custom_script.js");
+                throw new IOException("Script file not found in resources: /kubejs/server_scripts/HungerGoVroom.js");
             }
 
             Files.createDirectories(destinationPath.getParent());
