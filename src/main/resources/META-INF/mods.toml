@@ -9,7 +9,7 @@ license="GPLv3"
 [[mods]]
     modId="hungergovroom"
     version="1.0"
-    displayName="Hunger Go Vroom a KubeJS script"
+    displayName="HungerGoVroom.js"
     description="This mod simply makes you get hungry much faster. And makes you hungry after sleeping."
     credits="Vicc for the idea."
 
