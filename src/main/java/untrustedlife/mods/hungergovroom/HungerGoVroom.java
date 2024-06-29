@@ -4,6 +4,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
@@ -38,7 +40,8 @@ public class HungerGoVroom {
             }
 
             Files.createDirectories(destinationPath.getParent());
-            Files.copy(inputStream, destinationPath);
+            Files.copy(inputStream, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

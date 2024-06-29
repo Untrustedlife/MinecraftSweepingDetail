@@ -1,9 +1,11 @@
 // Listen to player tick event to modify hunger depletion
-console.info("Running HungerGoVroom...")
+console.info("Running HungerGoVroom...");
+let previousPosition = { x: 0, y: 0, z: 0 };
 PlayerEvents.tick(event => {
+  let player = event.player;
+  const currentPosition = { x: player.x, y: player.y, z: player.z };
     //20 ticks a second default 0.01, 4 exuhstian for one half shank
     //20 seconds -> 1 food baseline
-    let player = event.player;
     // Check if player is not in creative or spectator mode
     if (!player.isCreative() && !player.isSpectator()) {
         let exhaustionToAdd = 0.01;
@@ -23,8 +25,10 @@ PlayerEvents.tick(event => {
       if (player.isMiningBlock()){
         exhaustionToAdd+=0.02;
       }
-      if (player.isMoving()){
-        exhaustionToAdd+=0.01;
+      //Might add some functions just to do this with a single function call
+      if (previousPosition.x !== currentPosition.x || previousPosition.y !== currentPosition.y || previousPosition.z !== currentPosition.z) {
+        // Player has moved
+        exhaustionToAdd += 0.01;
       }
       if (player.isBlocking()){
         exhaustionToAdd+=0.015;
@@ -32,7 +36,7 @@ PlayerEvents.tick(event => {
       if (player.isSleeping()){
         exhaustionToAdd+=0.5;
       }
-      //if player alive increase exaustian
+      //if player alive increase exhaustion
       if (player.isAlive()) {
         player.addExhaustion(exhaustionToAdd)
       }
@@ -40,7 +44,7 @@ PlayerEvents.tick(event => {
     }
   });
 
-  //No attackentity event tro use
+  //No attackentity event to use
   EntityEvents.hurt(event => {
     if (event.source.player){
         event.source.player.addExhaustion(1);
