@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: ulsmsd
+Specification-Vendor: Untrustedlife
+Specification-Version: 1
+Implementation-Title: MinecraftSweepingDetail
+Implementation-Version: 1.0
+Implementation-Vendor: Untrustedlife
+Implementation-Timestamp: 2024-09-06T18:56:16-0500
+
