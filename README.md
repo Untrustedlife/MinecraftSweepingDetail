@@ -1,8 +1,4 @@
-# HungerGoVroom
-HungerGoVroom.js, a dumb minecraft mod that could have been done much easier by just writing the code in a mod.
-## A Pointlessly Silly Minecraft Mod
-Introducing: An utterly pointless mod that does nothing but copy a single JavaScript file to make your hunger deplete faster into the kubejs/server_scripts folder. That's it. That's the whole mod.
-
-Why did I do this instead of just writing the code directly into the mod itself? Because I like to challenge myself to do dumb, silly things for the laughs. Plus, a friend wanted it.
-
-Purpose: None, except to make you laugh at the sheer absurdity of it. Enjoy!
+# minecraftsweepingdetail
+Minecraft Cleaning Detail brings a new twist to the game by making sweeping a core mechanic! Sweep up dust and trash piles with brooms, gather rare materials, and even craft a janitor's outfit. 
+## Sweep Things
+It will add trash blocks of various rarities that you can sweep up with a broom, providing different rewards when swept, making it useful in a survival setting. It will also introduce dust that gradually covers the interior of your buildings, requiring regular cleaning or it will slow down your movement and make you sick and such. Or something like that!

@@ -7,9 +7,9 @@ plugins {
 }
 
 version = 1.0
-group = 'untrustedlife.mods.hungergovroom'
+group = 'untrustedlife.mods.minecraftsweepingdetail'
 base {
-    archivesName = 'hungergovroom'
+    archivesName = 'minecraftsweepingdetail'
 }
 
 
