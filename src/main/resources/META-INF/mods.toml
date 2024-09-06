@@ -1,28 +1,21 @@
 modLoader="javafml"
 loaderVersion="[43,)"
 issueTrackerURL=""
-displayURL="https://minecraft.curseforge.com/projects/hungergovroom" 
-logoFile="vroom_icon.png"
+displayURL="https://minecraft.curseforge.com/projects/minecraftsweepingdetail" 
+logoFile="broom_icon.png"
 authors="Untrustedlife"
 license="GPLv3"
 
 [[mods]]
-    modId="hungergovroom"
+    modId="ulsmsd"
     version="1.0"
-    displayName="HungerGoVroom.js"
-    description="This mod simply makes you get hungry much faster. And makes you hungry after sleeping."
-    credits="Vicc for the idea."
+    displayName="Minecraft Sweeping Detail"
+    description="Minecraft Cleaning Detail brings a new twist to the game by making sweeping a core mechanic! Sweep up dust and trash piles with brooms, gather rare materials, and even craft a janitor's outfit."
+    credits="Me. I made it."
 
 [[dependencies.hungergovroom]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.19.2,)"
-    ordering="NONE"
-    side="BOTH"
-
-[[dependencies.hungergovroom]]
-    modId="kubejs"
-    mandatory=true
-    versionRange="[1902.6.2-build.73,)"
     ordering="NONE"
     side="BOTH"
