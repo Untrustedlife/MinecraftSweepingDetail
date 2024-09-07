@@ -15,7 +15,7 @@ public class MinecraftSweepingDetail {
 
     public MinecraftSweepingDetail() {
         // Register the setup method for modloading
-        LOGGER.info("MinecraftSweepingDetail");
+        LOGGER.info("MinecraftSweepingDetail loaded.");
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     }
 
