@@ -13,7 +13,7 @@ license="GPLv3"
     description="Minecraft Cleaning Detail brings a new twist to the game by making sweeping a core mechanic! Sweep up dust and trash piles with brooms, gather rare materials, and even craft a janitor's outfit."
     credits="Me. I made it."
 
-[[dependencies.hungergovroom]]
+[[dependencies.ulsmsd]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.19.2,)"
