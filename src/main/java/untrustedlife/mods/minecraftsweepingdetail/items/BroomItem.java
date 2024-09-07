@@ -40,42 +40,42 @@ public class BroomItem extends Item {
                         double xPos = clickedPos.getX() + 0.5;
                         double yPos = clickedPos.getY() + 0.5;
                         double zPos = clickedPos.getZ() + 0.5;
-                        switch (clickedFace) {
-                            case UP:
-                                yPos += 0.5;
-                                xPos+=(level.random.nextDouble());
-                                zPos+=(level.random.nextDouble());
-                                break;
-                            case DOWN:
-                                yPos -= 0.5;
-                                xPos+=(level.random.nextDouble());
-                                zPos+=(level.random.nextDouble());
-                                break;
-                            case NORTH:
-                                xPos+=(level.random.nextDouble());
-                                yPos+=(level.random.nextDouble());
-                                zPos -= 0.5;
-                                break;
-                            case SOUTH:
-                                xPos+=(level.random.nextDouble());
-                                yPos+=(level.random.nextDouble());
-                                zPos += 0.5;
-                                break;
-                            case WEST:
-                                zPos+=(level.random.nextDouble());
-                                yPos+=(level.random.nextDouble());
-                                xPos -= 0.5;
-                                break;
-                            case EAST:
-                            zPos+=(level.random.nextDouble());
-                            yPos+=(level.random.nextDouble());
-                                xPos += 0.5;
-                                break;
-                        }
                         for (int i = 0; i < 20; i++) {  // Increase particles for visibility
-                            double xSpeed = (level.random.nextDouble()) * 0.5;
-                            double ySpeed = (level.random.nextDouble()) * 0.5;
-                            double zSpeed = (level.random.nextDouble()) * 0.5;
+                            switch (clickedFace) {
+                                case UP:
+                                    yPos += 0.5;
+                                    xPos+=(level.random.nextDouble()*0.6);
+                                    zPos+=(level.random.nextDouble()*0.6);
+                                    break;
+                                case DOWN:
+                                    yPos -= 0.5;
+                                    xPos+=(level.random.nextDouble()*0.6);
+                                    zPos+=(level.random.nextDouble()*0.6);
+                                    break;
+                                case NORTH:
+                                    xPos+=(level.random.nextDouble()*0.6);
+                                    yPos+=(level.random.nextDouble()*0.6);
+                                    zPos -= 0.5;
+                                    break;
+                                case SOUTH:
+                                    xPos+=(level.random.nextDouble()*0.6);
+                                    yPos+=(level.random.nextDouble()*0.6);
+                                    zPos += 0.5;
+                                    break;
+                                case WEST:
+                                    zPos+=(level.random.nextDouble()*0.6);
+                                    yPos+=(level.random.nextDouble()*0.6);
+                                    xPos -= 0.5;
+                                    break;
+                                case EAST:
+                                    zPos+=(level.random.nextDouble()*0.6);
+                                    yPos+=(level.random.nextDouble()*0.6);
+                                    xPos += 0.5;
+                                    break;
+                            }
+                            double xSpeed = (level.random.nextDouble()- 0.5) * 0.5;
+                            double ySpeed = (level.random.nextDouble()- 0.5) * 0.5;
+                            double zSpeed = (level.random.nextDouble()- 0.5) * 0.5;
                             level.addParticle(new DustParticleOptions(new Vector3f(0, 0.5F, 0), 1.0F), xPos, yPos, zPos, xSpeed, ySpeed, zSpeed);
                         }
                     }
