@@ -10,6 +10,8 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import untrustedlife.mods.minecraftsweepingdetail.UntrustedDiceRolling;
+
 import com.mojang.math.Vector3f;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -37,39 +39,39 @@ public class BroomItem extends Item {
                         player.playSound(SoundEvents.GRASS_PLACE, 1.0F, 1.0F);
                         Direction clickedFace = context.getClickedFace();
                         BlockPos clickedPos = context.getClickedPos();
-                        double xPos = clickedPos.getX() + 0.5;
-                        double yPos = clickedPos.getY() + 0.5;
-                        double zPos = clickedPos.getZ() + 0.5;
                         for (int i = 0; i < 20; i++) {  // Increase particles for visibility
+                            double xPos = clickedPos.getX() + 0.5;
+                            double yPos = clickedPos.getY() + 0.5;
+                            double zPos = clickedPos.getZ() + 0.5;
                             switch (clickedFace) {
                                 case UP:
                                     yPos += 0.5;
-                                    xPos+=(level.random.nextDouble()*0.6);
-                                    zPos+=(level.random.nextDouble()*0.6);
+                                    xPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
+                                    zPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
                                     break;
                                 case DOWN:
                                     yPos -= 0.5;
-                                    xPos+=(level.random.nextDouble()*0.6);
-                                    zPos+=(level.random.nextDouble()*0.6);
+                                    xPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
+                                    zPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
                                     break;
                                 case NORTH:
-                                    xPos+=(level.random.nextDouble()*0.6);
-                                    yPos+=(level.random.nextDouble()*0.6);
+                                    xPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
+                                    yPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
                                     zPos -= 0.5;
                                     break;
                                 case SOUTH:
-                                    xPos+=(level.random.nextDouble()*0.6);
-                                    yPos+=(level.random.nextDouble()*0.6);
+                                    xPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
+                                    yPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
                                     zPos += 0.5;
                                     break;
                                 case WEST:
-                                    zPos+=(level.random.nextDouble()*0.6);
-                                    yPos+=(level.random.nextDouble()*0.6);
+                                    zPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
+                                    yPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
                                     xPos -= 0.5;
                                     break;
                                 case EAST:
-                                    zPos+=(level.random.nextDouble()*0.6);
-                                    yPos+=(level.random.nextDouble()*0.6);
+                                    zPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
+                                    yPos+=(UntrustedDiceRolling.generateRangeNegativeOneToOne());
                                     xPos += 0.5;
                                     break;
                             }

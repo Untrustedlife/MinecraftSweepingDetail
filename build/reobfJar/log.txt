@@ -165,6 +165,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   untrustedlife/mods/
   untrustedlife/mods/minecraftsweepingdetail/
   untrustedlife/mods/minecraftsweepingdetail/MinecraftSweepingDetail.class
+  untrustedlife/mods/minecraftsweepingdetail/UntrustedDiceRolling.class
   untrustedlife/mods/minecraftsweepingdetail/items/
   untrustedlife/mods/minecraftsweepingdetail/items/BroomItem$1.class
   untrustedlife/mods/minecraftsweepingdetail/items/BroomItem.class
