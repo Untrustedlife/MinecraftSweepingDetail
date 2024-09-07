@@ -3,9 +3,11 @@ package untrustedlife.mods.minecraftsweepingdetail;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import untrustedlife.mods.minecraftsweepingdetail.items.MinecraftSweepingDetailItems;
 
 @Mod(MinecraftSweepingDetail.MODID)
 public class MinecraftSweepingDetail {
@@ -16,7 +18,10 @@ public class MinecraftSweepingDetail {
     public MinecraftSweepingDetail() {
         // Register the setup method for modloading
         LOGGER.info("MinecraftSweepingDetail loaded.");
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+         bus.addListener(this::setup);
+        // Register items and other things with the mod event bus
+        MinecraftSweepingDetailItems.register(bus);
     }
 
     private void setup(final FMLClientSetupEvent event) {

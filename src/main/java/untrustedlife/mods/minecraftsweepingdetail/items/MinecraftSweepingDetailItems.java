@@ -13,7 +13,6 @@ import untrustedlife.mods.minecraftsweepingdetail.MinecraftSweepingDetail;
 public class MinecraftSweepingDetailItems {
     // Set up the DeferredRegister for items
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MinecraftSweepingDetail.MODID);
-
     // Register your custom broom item
     public static final RegistryObject<Item> BROOM = ITEMS.register("straw_broom",
         () -> new BroomItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(250)));

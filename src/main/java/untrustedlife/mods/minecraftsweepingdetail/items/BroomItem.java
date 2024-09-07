@@ -30,56 +30,62 @@ public class BroomItem extends Item {
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         Player player = context.getPlayer();
-        if (!level.isClientSide && player != null) {
+        if (player != null) {
             // just a test
             if (level.getBlockState(context.getClickedPos()).is(Blocks.GRASS_BLOCK)) {
-                level.setBlock(context.getClickedPos(), Blocks.DIRT.defaultBlockState(), 3);
-                player.playSound(SoundEvents.GRASS_PLACE, 1.0F, 1.0F);
-                player.swing(context.getHand(), true);  // Makes the player swing their arm as if attacking
-                Direction clickedFace = context.getClickedFace();
-                BlockPos clickedPos = context.getClickedPos();
-                double xPos = clickedPos.getX() + 0.5;
-                double yPos = clickedPos.getY() + 0.5;
-                double zPos = clickedPos.getZ() + 0.5;
-                switch (clickedFace) {
-                    case UP:
-                        yPos += 0.5;
-                        break;
-                    case DOWN:
-                        yPos -= 0.5;
-                        break;
-                    case NORTH:
-                        zPos -= 0.5;
-                        break;
-                    case SOUTH:
-                        zPos += 0.5;
-                        break;
-                    case WEST:
-                        xPos -= 0.5;
-                        break;
-                    case EAST:
-                        xPos += 0.5;
-                        break;
+
+                if (!level.isClientSide){
+                    level.setBlock(context.getClickedPos(), Blocks.DIRT.defaultBlockState(), 3);
+                    player.swing(context.getHand(), true);  // Makes the player swing their arm as if attacking
+                    context.getItemInHand().hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(context.getHand()));
+                    // Run a loot table (using the vanilla grass loot table for testing purposes)
+                    LootTable lootTable = level.getServer().getLootTables().get(new ResourceLocation("minecraft:blocks/grass_block"));
+                    LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
+                        .withParameter(LootContextParams.ORIGIN, context.getClickLocation())
+                        .withParameter(LootContextParams.TOOL, context.getItemInHand())
+                        .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
+                    LootContext lootContext = builder.create(LootContextParamSets.BLOCK);
+                    List<ItemStack> loot = lootTable.getRandomItems(lootContext);
+                    // Give the player the loot
+                    for (ItemStack itemStack : loot) {
+                        player.addItem(itemStack);
+                    }
                 }
-                for (int i = 0; i < 20; i++) {  // Increase particles for visibility
-                    double xSpeed = (level.random.nextDouble() - 0.5) * 0.2;
-                    double ySpeed = level.random.nextDouble() * 0.1;
-                    double zSpeed = (level.random.nextDouble() - 0.5) * 0.2;
-                    level.addParticle(new DustParticleOptions(new Vector3f(0, 0.5F, 0), 1.0F), xPos, yPos, zPos, xSpeed, ySpeed, zSpeed);
+                else {
+                    player.playSound(SoundEvents.GRASS_PLACE, 1.0F, 1.0F);
+                    Direction clickedFace = context.getClickedFace();
+                    BlockPos clickedPos = context.getClickedPos();
+                    double xPos = clickedPos.getX() + 0.5;
+                    double yPos = clickedPos.getY() + 0.5;
+                    double zPos = clickedPos.getZ() + 0.5;
+                    switch (clickedFace) {
+                        case UP:
+                            yPos += 0.5;
+                            break;
+                        case DOWN:
+                            yPos -= 0.5;
+                            break;
+                        case NORTH:
+                            zPos -= 0.5;
+                            break;
+                        case SOUTH:
+                            zPos += 0.5;
+                            break;
+                        case WEST:
+                            xPos -= 0.5;
+                            break;
+                        case EAST:
+                            xPos += 0.5;
+                            break;
+                    }
+                    for (int i = 0; i < 20; i++) {  // Increase particles for visibility
+                        double xSpeed = (level.random.nextDouble() - 0.5) * 0.2;
+                        double ySpeed = level.random.nextDouble() * 0.1;
+                        double zSpeed = (level.random.nextDouble() - 0.5) * 0.2;
+                        level.addParticle(new DustParticleOptions(new Vector3f(0, 0.5F, 0), 1.0F), xPos, yPos, zPos, xSpeed, ySpeed, zSpeed);
+                    }
                 }
-                context.getItemInHand().hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(context.getHand()));
-                // Run a loot table (using the vanilla grass loot table for testing purposes)
-                LootTable lootTable = level.getServer().getLootTables().get(new ResourceLocation("minecraft:blocks/grass_block"));
-                LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
-                    .withParameter(LootContextParams.ORIGIN, context.getClickLocation())
-                    .withParameter(LootContextParams.TOOL, context.getItemInHand())
-                    .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
-                LootContext lootContext = builder.create(LootContextParamSets.BLOCK);
-                List<ItemStack> loot = lootTable.getRandomItems(lootContext);
-                // Give the player the loot
-                for (ItemStack itemStack : loot) {
-                    player.addItem(itemStack);
-                }
+
 
                 return InteractionResult.SUCCESS;
             }

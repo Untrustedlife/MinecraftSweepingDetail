@@ -133,15 +133,40 @@ Adding Libraries to Inheritance
 Reading Input: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDetail\build\libs\minecraftsweepingdetail-1.0.jar
 Adding input to inheritance map
 Processing entries
+Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/MinecraftSweepingDetailItems$1/makeIcon()Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/CreativeModeTab/makeIcon()Lnet/minecraft/world/item/ItemStack;: makeIcon -> m_6976_
+Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;: useOn -> m_6225_
+Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
 Adding extras
 Sorting
 Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDetail\build\reobfJar\output.jar
   META-INF/
   META-INF/MANIFEST.MF
   META-INF/mods.toml
+  assets/
+  assets/ulsmsd/
+  assets/ulsmsd/lang/
+  assets/ulsmsd/lang/en_us.json
+  assets/ulsmsd/models/
+  assets/ulsmsd/models/item/
+  assets/ulsmsd/models/item/straw_broom.json
+  assets/ulsmsd/textures/
+  assets/ulsmsd/textures/item/
+  assets/ulsmsd/textures/item/straw_broom.png
   broom_icon.png
+  data/
+  data/ulsmsd/
+  data/ulsmsd/recipes/
+  data/ulsmsd/recipes/straw_broom_recipe.json
+  data/ulsmsd/tags/
+  data/ulsmsd/tags/items/
+  data/ulsmsd/tags/items/strawtype.json
   pack.mcmeta
   untrustedlife/
   untrustedlife/mods/
   untrustedlife/mods/minecraftsweepingdetail/
   untrustedlife/mods/minecraftsweepingdetail/MinecraftSweepingDetail.class
+  untrustedlife/mods/minecraftsweepingdetail/items/
+  untrustedlife/mods/minecraftsweepingdetail/items/BroomItem$1.class
+  untrustedlife/mods/minecraftsweepingdetail/items/BroomItem.class
+  untrustedlife/mods/minecraftsweepingdetail/items/MinecraftSweepingDetailItems$1.class
+  untrustedlife/mods/minecraftsweepingdetail/items/MinecraftSweepingDetailItems.class
