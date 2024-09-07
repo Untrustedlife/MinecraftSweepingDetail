@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      " WW",
+      " SW",
+      "S  "
+    ],
+    "key": {
+      "S": {
+        "item": "minecraft:stick"
+      },
+      "W": {
+        "tag": "ulsmsd:strawtype"
+      }
+    },
+    "result": {
+      "item": "ulsmsd:straw_broom",
+      "count": 1
+    }
+  }
