@@ -134,6 +134,7 @@ Reading Input: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDeta
 Adding input to inheritance map
 Processing entries
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/MinecraftSweepingDetailItems$1/makeIcon()Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/CreativeModeTab/makeIcon()Lnet/minecraft/world/item/ItemStack;: makeIcon -> m_6976_
+Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomItem/getUseDuration(Lnet/minecraft/world/item/ItemStack;)I from net/minecraft/world/item/Item/getUseDuration(Lnet/minecraft/world/item/ItemStack;)I: getUseDuration -> m_8105_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;: useOn -> m_6225_
 Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
 Adding extras
@@ -158,6 +159,23 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/recipes/
   data/ulsmsd/recipes/straw_broom_recipe.json
   data/ulsmsd/tags/
+  data/ulsmsd/tags/blocks/
+  data/ulsmsd/tags/blocks/sweeptiertags/
+  data/ulsmsd/tags/blocks/sweeptiertags/readme.txt
+  data/ulsmsd/tags/blocks/sweeptiertags/sweepable.json
+  data/ulsmsd/tags/blocks/sweeptiertags/sweeptier_1.json
+  data/ulsmsd/tags/blocks/sweeptimetags/
+  data/ulsmsd/tags/blocks/sweeptimetags/readme.txt
+  data/ulsmsd/tags/blocks/sweeptimetags/sweep_one_sweeps.json
+  data/ulsmsd/tags/blocks/sweeptimetags/sweep_three_sweeps.json
+  data/ulsmsd/tags/blocks/sweeptimetags/sweep_two_sweeps.json
+  data/ulsmsd/tags/blocks/sweeptypetags/
+  data/ulsmsd/tags/blocks/sweeptypetags/readme.txt
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_blood.json
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_common_trash.json
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_dirt.json
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_slime.json
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_string.json
   data/ulsmsd/tags/items/
   data/ulsmsd/tags/items/strawtype.json
   pack.mcmeta

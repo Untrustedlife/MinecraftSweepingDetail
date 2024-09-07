@@ -2,28 +2,6 @@
     "replace": false,
     "values": [
       "minecraft:cobweb",
-      "horror_element_mod:blood_1",
-      "horror_element_mod:blood_2",
-      "horror_element_mod:blood_3",
-      "horror_element_mod:blood_4",
-      "horror_element_mod:blood_5",
-      "horror_element_mod:blood_6",
-      "horror_element_mod:blood_7",
-      "horror_element_mod:blood_8",
-      "horror_element_mod:blood_9",
-      "horror_element_mod:blood_10",
-      "horror_element_mod:acid_blood_1",
-      "horror_element_mod:acid_blood_2",
-      "horror_element_mod:green_blood_1",
-      "horror_element_mod:green_blood_2",
-      "minecraft:grass_block",
-      "apocalypsenow:papertrash",
-      "apocalypsenow:paperstrash",
-      "apocalypsenow:papertrashvariant",
-      "apocalypsenow:papertrashvariant_2",
-      "apocalypsenow:paperstrashvariant_2",
-      "apocalypsenow:paperstrashvariant",
-      "apocalypsenow:papersvariant",
-      "apocalypsenow:papersvariant_2"
+      "minecraft:grass_block"
     ]
 }

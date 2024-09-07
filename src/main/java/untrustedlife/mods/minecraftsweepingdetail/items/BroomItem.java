@@ -25,6 +25,34 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.Level;
 import java.util.List;
 
+/*
+ * 
+ * Tag wishlist for later
+ * 
+ * Sweepable
+ *       "horror_element_mod:blood_1",
+      "horror_element_mod:blood_2",
+      "horror_element_mod:blood_3",
+      "horror_element_mod:blood_4",
+      "horror_element_mod:blood_5",
+      "horror_element_mod:blood_6",
+      "horror_element_mod:blood_7",
+      "horror_element_mod:blood_8",
+      "horror_element_mod:blood_9",
+      "horror_element_mod:blood_10",
+      "horror_element_mod:acid_blood_1",
+      "horror_element_mod:acid_blood_2",
+      "horror_element_mod:green_blood_1",
+      "horror_element_mod:green_blood_2",
+      "apocalypsenow:papertrash",
+      "apocalypsenow:paperstrash",
+      "apocalypsenow:papertrashvariant",
+      "apocalypsenow:papertrashvariant_2",
+      "apocalypsenow:paperstrashvariant_2",
+      "apocalypsenow:paperstrashvariant",
+      "apocalypsenow:papersvariant",
+      "apocalypsenow:papersvariant_2"
+ */
 public class BroomItem extends Item {
     private final int burnTicks;
     public BroomItem(Properties properties,int burnTimeInTicks) {
@@ -42,8 +70,11 @@ public class BroomItem extends Item {
                 if (level.isClientSide){
                     generateSweepParticles(player,level,context);
                 }
-
                 if (!level.isClientSide){
+                    //Need to do tag logic here
+
+                    //if grass do the gras one, otherwise eventually turn to air etc
+                    
                     //This is only valid for grass blocks, but ill test it with all for now
                     level.setBlock(context.getClickedPos(), Blocks.DIRT.defaultBlockState(), 1 | 2);
                     player.swing(context.getHand(), true);  // Makes the player swing their arm as if attacking
