@@ -1,6 +1,0 @@
-{
-    "sweep_sound": {
-        "subtitle": "ulsmsd.subtitle.open_chest",
-        "sounds": ["ulsmsd:sweep_sound"]
-      }
-}

@@ -134,6 +134,8 @@ Reading Input: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDeta
 Adding input to inheritance map
 Processing entries
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/MinecraftSweepingDetailItems$1/makeIcon()Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/CreativeModeTab/makeIcon()Lnet/minecraft/world/item/ItemStack;: makeIcon -> m_6976_
+Conflicting propagated mapping for net/minecraftforge/common/data/SoundDefinitionsProvider/run(Lnet/minecraft/data/CachedOutput;)V from net/minecraft/data/DataProvider/run(Lnet/minecraft/data/CachedOutput;)V: run -> m_213708_
+Conflicting propagated mapping for net/minecraftforge/common/data/SoundDefinitionsProvider/getName()Ljava/lang/String; from net/minecraft/data/DataProvider/getName()Ljava/lang/String;: getName -> m_6055_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomItem/getUseDuration(Lnet/minecraft/world/item/ItemStack;)I from net/minecraft/world/item/Item/getUseDuration(Lnet/minecraft/world/item/ItemStack;)I: getUseDuration -> m_8105_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;: useOn -> m_6225_
 Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
@@ -150,7 +152,6 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/models/
   assets/ulsmsd/models/item/
   assets/ulsmsd/models/item/straw_broom.json
-  assets/ulsmsd/sounds.json
   assets/ulsmsd/sounds/
   assets/ulsmsd/sounds/sweep_sound.ogg
   assets/ulsmsd/textures/
@@ -187,6 +188,8 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   untrustedlife/mods/minecraftsweepingdetail/
   untrustedlife/mods/minecraftsweepingdetail/MinecraftSweepingDetail.class
   untrustedlife/mods/minecraftsweepingdetail/UntrustedDiceRolling.class
+  untrustedlife/mods/minecraftsweepingdetail/data/
+  untrustedlife/mods/minecraftsweepingdetail/data/SweepingDetailSoundDefinitions.class
   untrustedlife/mods/minecraftsweepingdetail/items/
   untrustedlife/mods/minecraftsweepingdetail/items/BroomItem$1.class
   untrustedlife/mods/minecraftsweepingdetail/items/BroomItem.class

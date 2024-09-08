@@ -15,7 +15,6 @@ import untrustedlife.mods.minecraftsweepingdetail.MinecraftSweepingDetail;
  *
  * @author Untrustedlife
  */
-@Mod.EventBusSubscriber(modid = MinecraftSweepingDetail.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MinecraftSweepingDetailItems {
     // Set up the DeferredRegister for items
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MinecraftSweepingDetail.MODID);
