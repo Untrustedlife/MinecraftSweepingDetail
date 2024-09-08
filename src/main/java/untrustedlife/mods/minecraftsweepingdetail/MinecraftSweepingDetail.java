@@ -36,6 +36,4 @@ public class MinecraftSweepingDetail {
     public void onSetupEvent(final FMLCommonSetupEvent event) {
         LOGGER.info("Common setup event triggered");
     }
-
-
 }

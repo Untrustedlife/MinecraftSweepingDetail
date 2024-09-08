@@ -1,30 +1,35 @@
 package untrustedlife.mods.minecraftsweepingdetail.items;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import untrustedlife.mods.minecraftsweepingdetail.UntrustedDiceRolling;
 import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
-
+import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.math.Vector3f;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.Level;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 /*
  * 
@@ -59,11 +64,13 @@ import java.util.List;
  *
  * @author Untrustedlife
  */
-public class BroomItem extends Item {
+public class BroomItem extends SwordItem  {
     private final int burnTicks;
-    public BroomItem(Properties properties,int burnTimeInTicks) {
-        super(properties);
-        this.burnTicks = burnTimeInTicks;
+    private final int sweepUseTime;
+    public BroomItem(Properties properties,int burnTimeInTicks, int sweepUseTimeInTicks) {
+         super(Tiers.WOOD, 4, -2.4F,properties);
+         this.burnTicks = burnTimeInTicks;
+         this.sweepUseTime = sweepUseTimeInTicks;
     }
 
     @Override
@@ -78,39 +85,15 @@ public class BroomItem extends Item {
                 }
                 if (!level.isClientSide){
                     //Need to do tag logic here
-                    level.playSound(null, player.getX(), player.getY(), player.getZ(), SweepingDetailSoundRegistry.SWEEP_SOUND.get(), SoundSource.PLAYERS, 1f, 1f);
-                    //if grass do the gras one, otherwise eventually turn to air etc
-                    
-                    //This is only valid for grass blocks, but ill test it with all for now
-                    level.setBlock(context.getClickedPos(), Blocks.DIRT.defaultBlockState(), 1 | 2);
-                    player.swing(context.getHand(), true);  // Makes the player swing their arm as if attacking
-                    context.getItemInHand().hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(context.getHand()));
-                    // Run a loot table (using the vanilla grass loot table for testing purposes)
-                    LootTable lootTable = level.getServer().getLootTables().get(new ResourceLocation("minecraft:blocks/cobweb"));
-                    LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
-                        .withParameter(LootContextParams.ORIGIN, context.getClickLocation())
-                        .withParameter(LootContextParams.TOOL, context.getItemInHand())
-                        .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(context.getClickedPos()))  // Include the block state
-                        .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
-
-                    LootContext lootContext = builder.create(LootContextParamSets.BLOCK);
-                    List<ItemStack> loot = lootTable.getRandomItems(lootContext);
-                    // Give the player the loot
-                    for (ItemStack itemStack : loot) {
-                        player.addItem(itemStack);
-                    }
-
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(), SweepingDetailSoundRegistry.SWEEP_SOUND.get(), SoundSource.PLAYERS, 0.15f+(float)UntrustedDiceRolling.generateNormalizedValueBetween(0.07), 1.5f+((float)UntrustedDiceRolling.generateRangeNegativeOneToOne()/2));
+                    RunSweepRoutineBasedOnTags(level,player,context);
+                    player.getCooldowns().addCooldown(this, sweepUseTime); // 20 ticks = 1 second
                 }
                 return InteractionResult.SUCCESS;
              }
             }
+        //Means broom can also scrape moss
         return super.useOn(context);
-    }
-
-    @Override
-    public void onUsingTick(ItemStack stack, LivingEntity entity, int count)
-    {
-
     }
 
     @Override
@@ -118,7 +101,7 @@ public class BroomItem extends Item {
         if (stack.getItem().isEdible()) {
            return stack.getFoodProperties(null).isFastFood() ? 20 : 40;
         } else {
-            return 40;
+            return 80;
         }
      }
 
@@ -175,6 +158,108 @@ public class BroomItem extends Item {
         }
     }
 
+
+
+    // Helper method to check if Alt is pressed
+    private boolean isAltKeyPressed() {
+        long windowHandle = Minecraft.getInstance().getWindow().getWindow();
+        // Check if the left Alt key is pressed
+        return InputConstants.isKeyDown(windowHandle, InputConstants.KEY_LALT);
+    }
+
+    
+    public void RunSweepRoutineBasedOnTags(Level level, Player player, UseOnContext context) {
+        BlockState state = level.getBlockState(context.getClickedPos());
+        
+        // Use a data-driven approach to map sweep types to their corresponding loot tables
+        Map<String, ResourceLocation> sweepTypeLootMap = Map.of(
+            "sweep_string", new ResourceLocation("minecraft:blocks/cobweb"),
+            "sweep_dirt", new ResourceLocation("minecraft:blocks/grass")
+            // Add more sweep types and their corresponding loot tables here
+        );
+        
+        // Find the sweep type from block tags
+        Optional<String> sweepType = getSweepTypeFromState(state);
+        if (sweepType.isPresent() && sweepTypeLootMap.containsKey(sweepType.get())) {
+            processSweeping(level, player, context, sweepTypeLootMap.get(sweepType.get()));
+        }
+    }
+
+    // Helper method to get the sweep type from block state using tags
+    private Optional<String> getSweepTypeFromState(BlockState state) {
+        for (String sweepType : Arrays.asList("sweep_string", "sweep_dirt")) {
+            if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptypetags/" + sweepType)))) {
+                return Optional.of(sweepType);
+            }
+        }
+        return Optional.empty();
+    }
+
+    // Helper method to process the sweeping and run the loot table
+    private void processSweeping(Level level, Player player, UseOnContext context, ResourceLocation lootTableLocation) {
+        // Remove the block
+        level.setBlock(context.getClickedPos(), Blocks.AIR.defaultBlockState(), 1 | 2);
+        player.swing(context.getHand(), true);  // Makes the player swing their arm as if attacking
+        context.getItemInHand().hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(context.getHand()));
+        
+        // Fetch and run the loot table
+        LootTable lootTable = level.getServer().getLootTables().get(lootTableLocation);
+        LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
+            .withParameter(LootContextParams.ORIGIN, context.getClickLocation())
+            .withParameter(LootContextParams.TOOL, context.getItemInHand())
+            .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(context.getClickedPos()))  // Include the block state
+            .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
+        
+        LootContext lootContext = builder.create(LootContextParamSets.BLOCK);
+        List<ItemStack> loot = lootTable.getRandomItems(lootContext);
+        
+        // Give the player the loot
+        for (ItemStack itemStack : loot) {
+            player.addItem(itemStack);
+        }
+    }
+
+
+    // Method to calculate the number of sweeps required based on block and broom tiers
+    private int calculateSweepsRequired(int blockTier, int broomTier, int baseSweeps) {
+        // If the broom's tier is lower, multiply the sweeps for each tier difference
+        if (broomTier < blockTier) {
+            int tierDifference = blockTier - broomTier;
+            return baseSweeps * (int) Math.pow(3, tierDifference);  // Multiply by 3 for each tier difference
+        }
+        return baseSweeps;  // If broom tier >= block tier, use base sweeps
+    }
+
+    // Retrieves the broom tier based on the item in hand (tool tier)
+    private int getTierFromTool(ItemStack tool) {
+        // Check if the tool has the tag for broom tier 1
+        if (tool.is(ItemTags.create(new ResourceLocation("ulsmsd", "broomtier1")))) {
+            return 1;
+        }
+        // Check if the tool has the tag for broom tier 2
+        else if (tool.is(ItemTags.create(new ResourceLocation("ulsmsd", "broomtier2")))) {
+            return 2;
+        }
+        // Check if the tool has the tag for broom tier 3
+        else if (tool.is(ItemTags.create(new ResourceLocation("ulsmsd", "broomtier3")))) {
+            return 3;
+        }
+        // Default to tier 1 if no tag is found
+        return 1;
+    }
+
+    private int getTierFromBlock(BlockState state) {
+        // The block has a tag that gives the tier level (1, 2, 3)
+        if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweeptier_1")))) {
+            return 1;
+        } else if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweeptier_2")))) {
+            return 2;
+        } else if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweeptier_3")))) {
+            return 3;
+        }
+        return 1;  // Default to tier 1 if not found
+    }
+    
 
 
 }

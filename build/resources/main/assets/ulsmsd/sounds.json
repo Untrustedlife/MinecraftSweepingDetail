@@ -3,7 +3,8 @@
         "subtitle": "ulsmsd.subtitle.open_chest",
         "category":"player",
         "sounds": [{
-          "name":"ulsmsd:sweep_sound"
+          "name":"ulsmsd:sweep_sound",
+          "stream":false
           }]
       }
 }
