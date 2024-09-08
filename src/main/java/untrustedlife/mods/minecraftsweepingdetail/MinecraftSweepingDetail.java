@@ -10,8 +10,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import untrustedlife.mods.minecraftsweepingdetail.data.SweepingDetailSoundDefinitions;
 import untrustedlife.mods.minecraftsweepingdetail.items.MinecraftSweepingDetailItems;
 import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
 
@@ -33,17 +33,9 @@ public class MinecraftSweepingDetail {
         LOGGER.info("Sounds loaded.");
     }
 
-    public void onSetupEvent(final FMLClientSetupEvent event) {
-        LOGGER.info("Client setup event triggered");
+    public void onSetupEvent(final FMLCommonSetupEvent event) {
+        LOGGER.info("Common setup event triggered");
     }
 
 
-     @SubscribeEvent
-    public static void gatherData(GatherDataEvent event) {
-        DataGenerator generator = event.getGenerator();
-        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-
-        // Register your SoundDefinitionsProvider
-        generator.addProvider(event.includeServer(), new SweepingDetailSoundDefinitions(generator, existingFileHelper));
-    }
 }

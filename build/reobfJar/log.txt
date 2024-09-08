@@ -152,6 +152,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/models/
   assets/ulsmsd/models/item/
   assets/ulsmsd/models/item/straw_broom.json
+  assets/ulsmsd/sounds.json
   assets/ulsmsd/sounds/
   assets/ulsmsd/sounds/sweep_sound.ogg
   assets/ulsmsd/textures/

@@ -39,7 +39,7 @@ public class SweepingDetailSoundRegistry {
 	 * @param soundName The sound event's name, without the ulsmsd prefix
 	 * @return A RegistryObject reference to the SoundEvent
 	 */
-	private static RegistryObject<SoundEvent> registerSoundEvent(final String soundName) {
+	private static final RegistryObject<SoundEvent> registerSoundEvent(final String soundName) {
 		return SOUND_EVENTS.register(soundName, () -> new SoundEvent(new ResourceLocation(MinecraftSweepingDetail.MODID, soundName)));
 	}
 }
