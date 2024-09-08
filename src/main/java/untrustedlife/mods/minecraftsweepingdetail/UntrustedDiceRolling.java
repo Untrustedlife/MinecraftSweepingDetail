@@ -1,7 +1,6 @@
 package untrustedlife.mods.minecraftsweepingdetail;
 
 public class UntrustedDiceRolling {
-
     /**
      * This function returns a number between 1 (inclusive) and maxDice (inclusive)
      * @param maxDice

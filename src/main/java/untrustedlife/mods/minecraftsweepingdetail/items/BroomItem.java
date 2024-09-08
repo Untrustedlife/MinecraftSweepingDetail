@@ -4,7 +4,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Blocks;
@@ -13,6 +12,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import untrustedlife.mods.minecraftsweepingdetail.UntrustedDiceRolling;
+import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
 
 import com.mojang.math.Vector3f;
 import net.minecraft.core.BlockPos;
@@ -20,7 +20,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.Level;
 import java.util.List;
@@ -53,6 +54,11 @@ import java.util.List;
       "apocalypsenow:papersvariant",
       "apocalypsenow:papersvariant_2"
  */
+/**
+ * Creates the broom item, which is the main feature of this mod.
+ *
+ * @author Untrustedlife
+ */
 public class BroomItem extends Item {
     private final int burnTicks;
     public BroomItem(Properties properties,int burnTimeInTicks) {
@@ -72,7 +78,7 @@ public class BroomItem extends Item {
                 }
                 if (!level.isClientSide){
                     //Need to do tag logic here
-
+                    level.playSound(null, player.getX(), player.getY(), player.getZ(), SweepingDetailSoundRegistry.SWEEP_SOUND.get(), SoundSource.PLAYERS, 1f, 1f);
                     //if grass do the gras one, otherwise eventually turn to air etc
                     
                     //This is only valid for grass blocks, but ill test it with all for now
@@ -80,7 +86,7 @@ public class BroomItem extends Item {
                     player.swing(context.getHand(), true);  // Makes the player swing their arm as if attacking
                     context.getItemInHand().hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(context.getHand()));
                     // Run a loot table (using the vanilla grass loot table for testing purposes)
-                    LootTable lootTable = level.getServer().getLootTables().get(new ResourceLocation("minecraft:blocks/grass_block"));
+                    LootTable lootTable = level.getServer().getLootTables().get(new ResourceLocation("minecraft:blocks/cobweb"));
                     LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
                         .withParameter(LootContextParams.ORIGIN, context.getClickLocation())
                         .withParameter(LootContextParams.TOOL, context.getItemInHand())
@@ -123,7 +129,6 @@ public class BroomItem extends Item {
 
     //Possibly use tags to change this too
     public void generateSweepParticles( Player player, Level level , UseOnContext context){
-        player.playSound(SoundEvents.GRASS_PLACE, 1.0F, 1.0F);
         Direction clickedFace = context.getClickedFace();
         BlockPos clickedPos = context.getClickedPos();
         for (int i = 0; i < 20; i++) {  // Increase particles for visibility
@@ -166,6 +171,7 @@ public class BroomItem extends Item {
             double ySpeed = (level.random.nextDouble()- 0.5) * 0.5;
             double zSpeed = (level.random.nextDouble()- 0.5) * 0.5;
             level.addParticle(new DustParticleOptions(new Vector3f(0, 0.5F, 0), 1.0F), xPos, yPos, zPos, xSpeed, ySpeed, zSpeed);
+            //level.playSound(null, player.getX(), player.getY(), player.getZ(), SweepingDetailSoundRegistry.SWEEP_SOUND.get(), SoundSource.PLAYERS, 1f, 1f);
         }
     }
 

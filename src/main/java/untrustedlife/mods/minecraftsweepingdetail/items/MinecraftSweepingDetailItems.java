@@ -9,6 +9,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import untrustedlife.mods.minecraftsweepingdetail.MinecraftSweepingDetail;
 
+
+/**
+ * Registers this mod's {@link Item}s.
+ *
+ * @author Untrustedlife
+ */
 @Mod.EventBusSubscriber(modid = MinecraftSweepingDetail.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MinecraftSweepingDetailItems {
     // Set up the DeferredRegister for items

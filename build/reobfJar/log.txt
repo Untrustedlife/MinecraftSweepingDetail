@@ -150,6 +150,9 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/models/
   assets/ulsmsd/models/item/
   assets/ulsmsd/models/item/straw_broom.json
+  assets/ulsmsd/sounds.json
+  assets/ulsmsd/sounds/
+  assets/ulsmsd/sounds/sweep_sound.ogg
   assets/ulsmsd/textures/
   assets/ulsmsd/textures/item/
   assets/ulsmsd/textures/item/straw_broom.png
@@ -189,3 +192,5 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   untrustedlife/mods/minecraftsweepingdetail/items/BroomItem.class
   untrustedlife/mods/minecraftsweepingdetail/items/MinecraftSweepingDetailItems$1.class
   untrustedlife/mods/minecraftsweepingdetail/items/MinecraftSweepingDetailItems.class
+  untrustedlife/mods/minecraftsweepingdetail/sounds/
+  untrustedlife/mods/minecraftsweepingdetail/sounds/SweepingDetailSoundRegistry.class
