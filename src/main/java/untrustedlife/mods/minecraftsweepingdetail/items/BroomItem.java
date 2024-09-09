@@ -244,7 +244,12 @@ public class BroomItem extends SwordItem  {
                 player.displayClientMessage(Component.literal("§eAlmost there! Only " + timeLeft + " sweep left!"), true); 
             }
         } else if (currentSweeps >= requiredSweeps * 0.5) {
-            player.displayClientMessage(Component.literal("§6Still dirty! " + timeLeft + " sweeps left."), true);
+            if (timeLeft > 1){
+                player.displayClientMessage(Component.literal("§6Still dirty! " + timeLeft + " sweeps left."), true);
+            }
+            else {
+                player.displayClientMessage(Component.literal("§6Still dirty! " + timeLeft + " sweep left."), true);
+            }
         } else {
             player.displayClientMessage(Component.literal("§cThis might take a while. " + timeLeft + " sweeps left."), true);
         }
