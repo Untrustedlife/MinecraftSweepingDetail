@@ -9,7 +9,11 @@ import net.minecraftforge.fml.common.Mod;
 import untrustedlife.mods.minecraftsweepingdetail.MinecraftSweepingDetail;
 import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
 
-
+/**
+ * Used only when i run the data generate gradle, which isnt nessessary.
+ *
+ * @author Untrustedlife
+ */
 @Mod.EventBusSubscriber(modid = MinecraftSweepingDetail.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class SweepingDetailSoundDefinitions extends SoundDefinitionsProvider {
     public SweepingDetailSoundDefinitions(DataGenerator output, ExistingFileHelper helper) {

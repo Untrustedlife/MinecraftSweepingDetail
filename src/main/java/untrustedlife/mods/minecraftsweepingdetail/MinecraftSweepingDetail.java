@@ -9,6 +9,11 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import untrustedlife.mods.minecraftsweepingdetail.items.MinecraftSweepingDetailItems;
 import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
 
+/**
+ * Actually creates the mod.
+ *
+ * @author Untrustedlife
+ */
 @Mod(MinecraftSweepingDetail.MODID)
 @Mod.EventBusSubscriber(modid = MinecraftSweepingDetail.MODID, bus = Bus.MOD)
 public class MinecraftSweepingDetail {

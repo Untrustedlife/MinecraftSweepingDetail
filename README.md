@@ -1,3 +1,5 @@
+## Author: Untrustedlife
+
 # MinecraftSweepingDetail
 MinecraftSweepingDetail brings sweeping up things to the forefront as a core mechanic in a vanilla+ style! With satisfying sounds, you can sweep up dust and trash piles using brooms, collect rare materials, and even craft your very own janitor’s outfit.
 
