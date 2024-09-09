@@ -161,6 +161,9 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   broom_icon.png
   data/
   data/ulsmsd/
+  data/ulsmsd/loot_tables/
+  data/ulsmsd/loot_tables/blocks/
+  data/ulsmsd/loot_tables/blocks/dirt_sweeping.json
   data/ulsmsd/recipes/
   data/ulsmsd/recipes/straw_broom_recipe.json
   data/ulsmsd/tags/

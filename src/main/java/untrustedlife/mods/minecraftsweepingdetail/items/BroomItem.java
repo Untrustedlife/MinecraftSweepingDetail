@@ -153,7 +153,7 @@ public class BroomItem extends SwordItem  {
             double xSpeed = (level.random.nextDouble()- 0.5) * 0.5;
             double ySpeed = (level.random.nextDouble()- 0.5) * 0.5;
             double zSpeed = (level.random.nextDouble()- 0.5) * 0.5;
-            level.addParticle(new DustParticleOptions(new Vector3f(0, 0.5F, 0), 1.0F), xPos, yPos, zPos, xSpeed, ySpeed, zSpeed);
+            level.addParticle(new DustParticleOptions(new Vector3f(0, 0.5F, 0.1F), 1.0F), xPos, yPos, zPos, xSpeed, ySpeed, zSpeed);
             //level.playSound(null, player.getX(), player.getY(), player.getZ(), SweepingDetailSoundRegistry.SWEEP_SOUND.get(), SoundSource.PLAYERS, 1f, 1f);
         }
     }
@@ -173,8 +173,9 @@ public class BroomItem extends SwordItem  {
         
         // Use a data-driven approach to map sweep types to their corresponding loot tables
         Map<String, ResourceLocation> sweepTypeLootMap = Map.of(
+            //These should probably be custom loot tables
             "sweep_string", new ResourceLocation("minecraft:blocks/cobweb"),
-            "sweep_dirt", new ResourceLocation("minecraft:blocks/grass")
+            "sweep_dirt", new ResourceLocation("ulsmsd:blocks/dirt_sweeping")
             // Add more sweep types and their corresponding loot tables here
         );
         
@@ -197,6 +198,9 @@ public class BroomItem extends SwordItem  {
 
     // Helper method to process the sweeping and run the loot table
     private void processSweeping(Level level, Player player, UseOnContext context, ResourceLocation lootTableLocation) {
+
+
+        //Should only remove the block when done
         // Remove the block
         level.setBlock(context.getClickedPos(), Blocks.AIR.defaultBlockState(), 1 | 2);
         player.swing(context.getHand(), true);  // Makes the player swing their arm as if attacking
@@ -233,15 +237,15 @@ public class BroomItem extends SwordItem  {
     // Retrieves the broom tier based on the item in hand (tool tier)
     private int getTierFromTool(ItemStack tool) {
         // Check if the tool has the tag for broom tier 1
-        if (tool.is(ItemTags.create(new ResourceLocation("ulsmsd", "broomtier1")))) {
+        if (tool.is(ItemTags.create(new ResourceLocation("ulsmsd", "broomtiers/broomtier1")))) {
             return 1;
         }
         // Check if the tool has the tag for broom tier 2
-        else if (tool.is(ItemTags.create(new ResourceLocation("ulsmsd", "broomtier2")))) {
+        else if (tool.is(ItemTags.create(new ResourceLocation("ulsmsd", "broomtiers/broomtier2")))) {
             return 2;
         }
         // Check if the tool has the tag for broom tier 3
-        else if (tool.is(ItemTags.create(new ResourceLocation("ulsmsd", "broomtier3")))) {
+        else if (tool.is(ItemTags.create(new ResourceLocation("ulsmsd", "broomtiers/broomtier3")))) {
             return 3;
         }
         // Default to tier 1 if no tag is found
