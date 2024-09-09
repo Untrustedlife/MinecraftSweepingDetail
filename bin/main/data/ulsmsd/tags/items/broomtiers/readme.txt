@@ -1,0 +1,1 @@
+This folder contains tag sets that define which tiers brooms are. This is for assigning to dynamiclaly created brooms (kjs, crafttweaker etc)
