@@ -1,4 +1,5 @@
 {
     "item.ulsmsd.straw_broom": "Straw Broom",
-    "itemGroup.sweepingtab": "Sweeping Detail"
+    "itemGroup.sweepingtab": "Sweeping Detail",
+    "ulsmsd.sweep_sound": "*scritch*"
   }
