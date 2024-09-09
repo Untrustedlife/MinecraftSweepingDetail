@@ -322,14 +322,14 @@ public class BroomItem extends SwordItem  {
     }
 
     private int getSweepAmountFromBlock(BlockState state) {
-        // Check for sweep amount based on block tags
-        if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptimetags/sweep_one_sweeps")))) {
-            return 1;
-        } else if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptimetags/sweep_two_sweeps")))) {
-            return 2;
-        } else if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptimetags/sweep_three_sweeps")))) {
-            return 3;
+        // Loop through possible sweep amounts (up to any given number)
+        for (int i = 1; i <= 20; i++) {  // Adjust this upper limit as needed
+            ResourceLocation tag = new ResourceLocation("ulsmsd", "sweeptimetags/sweep_" + i + "_sweeps");
+            if (state.is(BlockTags.create(tag))) {
+                return i;  // Return the sweep amount based on the tag
+            }
         }
+        
         // Default to 1 sweep if no tag is found
         return 1;
     }

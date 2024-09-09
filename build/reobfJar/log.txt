@@ -177,9 +177,9 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/tags/blocks/sweeptiertags/sweeptier_3.json
   data/ulsmsd/tags/blocks/sweeptimetags/
   data/ulsmsd/tags/blocks/sweeptimetags/readme.txt
-  data/ulsmsd/tags/blocks/sweeptimetags/sweep_one_sweeps.json
-  data/ulsmsd/tags/blocks/sweeptimetags/sweep_three_sweeps.json
-  data/ulsmsd/tags/blocks/sweeptimetags/sweep_two_sweeps.json
+  data/ulsmsd/tags/blocks/sweeptimetags/sweep_1_sweeps.json
+  data/ulsmsd/tags/blocks/sweeptimetags/sweep_2_sweeps.json
+  data/ulsmsd/tags/blocks/sweeptimetags/sweep_3_sweeps.json
   data/ulsmsd/tags/blocks/sweeptypetags/
   data/ulsmsd/tags/blocks/sweeptypetags/readme.txt
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_blood.json
