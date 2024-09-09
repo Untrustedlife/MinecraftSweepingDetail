@@ -202,6 +202,11 @@ public class BroomItem extends SwordItem  {
     // Map stores the block position and a pair of sweeping progress and block state.
     private final Map<BlockPos, Pair<Integer, BlockState>> sweepingProgressMap = new HashMap<>();
 
+    //Arcadey streak
+    private int oneHitCleanStreak = 0;
+    private long lastSweepTime = 0;
+    private static final long STREAK_EXPIRATION_TIME = 2000L; // 2 seconds
+
     // Helper method to process the sweeping and run the loot table
     private void processSweeping(Level level, Player player, UseOnContext context, ResourceLocation lootTableLocation) {
         //This is all very mesy and needs to be seperated out into other functions
@@ -228,12 +233,25 @@ public class BroomItem extends SwordItem  {
         sweepingProgressMap.put(pos, Pair.of(currentSweeps, currentState));
         // Display progress to the player
         int timeLeft = Math.max(1, requiredSweeps - currentSweeps);
+        long currentTime = System.currentTimeMillis();
+        if (currentTime-lastSweepTime < STREAK_EXPIRATION_TIME){
+            oneHitCleanStreak=0;
+        }
         if (currentSweeps >= requiredSweeps) {
             if (requiredSweeps <= 1){
-                player.displayClientMessage(Component.literal("§a*Swish* One Hit Clean!"), true); 
+                if (oneHitCleanStreak > 0){
+                    oneHitCleanStreak+=1;
+                    player.displayClientMessage(Component.literal("§a*Swish* One Hit Clean! X"+oneHitCleanStreak), true); 
+                }
+                else {
+                    player.displayClientMessage(Component.literal("§a*Swish* One Hit Clean!"), true); 
+                    oneHitCleanStreak+=1;
+                }
+
             }
             else {
                 player.displayClientMessage(Component.literal("§aClean!"), true);
+                oneHitCleanStreak=0;
             }
 
         } else if (currentSweeps >= requiredSweeps * 0.75) {
