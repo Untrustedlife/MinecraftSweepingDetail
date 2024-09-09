@@ -164,6 +164,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/loot_tables/
   data/ulsmsd/loot_tables/blocks/
   data/ulsmsd/loot_tables/blocks/dirt_sweeping.json
+  data/ulsmsd/loot_tables/blocks/sand_sweeping.json
   data/ulsmsd/recipes/
   data/ulsmsd/recipes/straw_broom_recipe.json
   data/ulsmsd/tags/
@@ -185,6 +186,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_common_trash.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_dirt.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_dust.json
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_sand.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_slime.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_string.json
   data/ulsmsd/tags/items/

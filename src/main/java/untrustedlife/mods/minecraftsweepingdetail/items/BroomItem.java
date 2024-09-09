@@ -15,11 +15,13 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import untrustedlife.mods.minecraftsweepingdetail.UntrustedDiceRolling;
 import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
 import com.mojang.blaze3d.platform.InputConstants;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -27,6 +29,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.Level;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -197,30 +200,79 @@ public class BroomItem extends SwordItem  {
         return Optional.empty();
     }
 
+    // Map stores the block position and a pair of sweeping progress and block state.
+    private final Map<BlockPos, Pair<Integer, BlockState>> sweepingProgressMap = new HashMap<>();
+
     // Helper method to process the sweeping and run the loot table
     private void processSweeping(Level level, Player player, UseOnContext context, ResourceLocation lootTableLocation) {
+        //This is all very mesy and needs to be seperated out into other functions
+        BlockPos pos = context.getClickedPos();
+        BlockState currentState = level.getBlockState(pos);
+        // Retrieve broom and block tiers
+        int broomTier = getTierFromTool(context.getItemInHand());
+        int blockTier = getTierFromBlock(currentState);
+        // Determine the required number of sweeps for this block and broom combo
+        //add function for getting base sweeps from tags and defaulting to 2
+        int baseSweeps = getSweepAmountFromBlock(currentState);  // Test base number of sweeps
+        int requiredSweeps = calculateSweepsRequired(blockTier, broomTier, baseSweeps);
+        // Check if the block is in the map and reset if the block type has changed
+        Pair<Integer, BlockState> progressData = sweepingProgressMap.get(pos);
+        if (progressData != null && !progressData.getSecond().equals(currentState)) {
+            // Block type has changed, reset progress
+            sweepingProgressMap.remove(pos);
+            progressData = null;
+        }
+        // Get or initialize sweeping progress
+        int currentSweeps = progressData != null ? progressData.getFirst() : 0;
+        currentSweeps++;
+        // Update the progress in the map
+        sweepingProgressMap.put(pos, Pair.of(currentSweeps, currentState));
+        // Display progress to the player
+        int timeLeft = Math.max(1, requiredSweeps - currentSweeps);
+        if (currentSweeps >= requiredSweeps) {
+            if (requiredSweeps <= 1){
+                player.displayClientMessage(Component.literal("§a*Swish* One Hit Clean!"), true); 
+            }
+            else {
+                player.displayClientMessage(Component.literal("§aClean!"), true);
+            }
 
+        } else if (currentSweeps >= requiredSweeps * 0.75) {
+            player.displayClientMessage(Component.literal("§eAlmost there! Only " + timeLeft + " sweeps left!"), true);
+        } else if (currentSweeps >= requiredSweeps * 0.5) {
+            player.displayClientMessage(Component.literal("§6Still dirty! " + timeLeft + " sweeps left."), true);
+        } else {
+            player.displayClientMessage(Component.literal("§cThis might take a while. " + timeLeft + " sweeps left."), true);
+        }
 
-        //Should only remove the block when done
-        // Remove the block
-        level.setBlock(context.getClickedPos(), Blocks.AIR.defaultBlockState(), 1 | 2);
         player.swing(context.getHand(), true);  // Makes the player swing their arm as if attacking
         context.getItemInHand().hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(context.getHand()));
-        
-        // Fetch and run the loot table
-        LootTable lootTable = level.getServer().getLootTables().get(lootTableLocation);
-        LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
-            .withParameter(LootContextParams.ORIGIN, context.getClickLocation())
-            .withParameter(LootContextParams.TOOL, context.getItemInHand())
-            .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(context.getClickedPos()))  // Include the block state
-            .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
-        
-        LootContext lootContext = builder.create(LootContextParamSets.BLOCK);
-        List<ItemStack> loot = lootTable.getRandomItems(lootContext);
-        
-        // Give the player the loot
-        for (ItemStack itemStack : loot) {
-            player.addItem(itemStack);
+
+         // If all sweeps are complete, remove the block and give the loot
+        if (currentSweeps >= requiredSweeps) {
+            //Should only remove the block when done
+            // Remove the block
+            level.setBlock(context.getClickedPos(), Blocks.AIR.defaultBlockState(), 1 | 2);
+            // Fetch and run the loot table
+            LootTable lootTable = level.getServer().getLootTables().get(lootTableLocation);
+            LootContext.Builder builder = new LootContext.Builder((ServerLevel) level)
+                .withParameter(LootContextParams.ORIGIN, context.getClickLocation())
+                .withParameter(LootContextParams.TOOL, context.getItemInHand())
+                .withParameter(LootContextParams.BLOCK_STATE, level.getBlockState(context.getClickedPos()))  // Include the block state
+                .withOptionalParameter(LootContextParams.THIS_ENTITY, player);
+            
+            LootContext lootContext = builder.create(LootContextParamSets.BLOCK);
+            List<ItemStack> loot = lootTable.getRandomItems(lootContext);
+            // Give the player the loot
+            for (ItemStack itemStack : loot) {
+                player.addItem(itemStack);
+            }
+
+            // Remove the block from the progress map once cleaned
+            if (sweepingProgressMap.containsKey(pos)){
+                sweepingProgressMap.remove(pos);
+            }
+
         }
     }
 
@@ -231,8 +283,12 @@ public class BroomItem extends SwordItem  {
         if (broomTier < blockTier) {
             int tierDifference = blockTier - broomTier;
             return baseSweeps * (int) Math.pow(3, tierDifference);  // Multiply by 3 for each tier difference
+        } // If the broom's tier is higher, subtract the block's tier from the broom's tier and reduce the base sweep count by that amount (e.g., a tier 3 broom used on a tier 1 block reduces the required sweeps by 2, turning a 3-sweep block into a 1-sweep block)
+        else if (broomTier > blockTier){
+            int tierDifference = broomTier-blockTier;
+            return baseSweeps-tierDifference;
         }
-        return baseSweeps;  // If broom tier >= block tier, use base sweeps
+        return baseSweeps;
     }
 
     // Retrieves the broom tier based on the item in hand (tool tier)
@@ -264,6 +320,20 @@ public class BroomItem extends SwordItem  {
         }
         return 1;  // Default to tier 1 if not found
     }
+
+    private int getSweepAmountFromBlock(BlockState state) {
+        // Check for sweep amount based on block tags
+        if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptimetags/sweep_one_sweeps")))) {
+            return 1;
+        } else if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptimetags/sweep_two_sweeps")))) {
+            return 2;
+        } else if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptimetags/sweep_three_sweeps")))) {
+            return 3;
+        }
+        // Default to 1 sweep if no tag is found
+        return 1;
+    }
+
     
 
 
