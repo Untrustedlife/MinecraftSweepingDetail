@@ -157,7 +157,6 @@ public class BroomItem extends SwordItem  {
             double ySpeed = (level.random.nextDouble()- 0.5) * 0.5;
             double zSpeed = (level.random.nextDouble()- 0.5) * 0.5;
             level.addParticle(new DustParticleOptions(new Vector3f(0, 0.5F, 0.1F), 1.0F), xPos, yPos, zPos, xSpeed, ySpeed, zSpeed);
-            //level.playSound(null, player.getX(), player.getY(), player.getZ(), SweepingDetailSoundRegistry.SWEEP_SOUND.get(), SoundSource.PLAYERS, 1f, 1f);
         }
     }
 
@@ -238,7 +237,12 @@ public class BroomItem extends SwordItem  {
             }
 
         } else if (currentSweeps >= requiredSweeps * 0.75) {
-            player.displayClientMessage(Component.literal("§eAlmost there! Only " + timeLeft + " sweeps left!"), true);
+            if (timeLeft > 1){
+                player.displayClientMessage(Component.literal("§eAlmost there! Only " + timeLeft + " sweeps left!"), true);
+            }
+            else {
+                player.displayClientMessage(Component.literal("§eAlmost there! Only " + timeLeft + " sweep left!"), true); 
+            }
         } else if (currentSweeps >= requiredSweeps * 0.5) {
             player.displayClientMessage(Component.literal("§6Still dirty! " + timeLeft + " sweeps left."), true);
         } else {
