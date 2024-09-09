@@ -175,7 +175,8 @@ public class BroomItem extends SwordItem  {
         Map<String, ResourceLocation> sweepTypeLootMap = Map.of(
             //These should probably be custom loot tables
             "sweep_string", new ResourceLocation("minecraft:blocks/cobweb"),
-            "sweep_dirt", new ResourceLocation("ulsmsd:blocks/dirt_sweeping")
+            "sweep_dirt", new ResourceLocation("ulsmsd:blocks/dirt_sweeping"),
+            "sweep_sand", new ResourceLocation("ulsmsd:blocks/sand_sweeping")
             // Add more sweep types and their corresponding loot tables here
         );
         
@@ -188,7 +189,7 @@ public class BroomItem extends SwordItem  {
 
     // Helper method to get the sweep type from block state using tags
     private Optional<String> getSweepTypeFromState(BlockState state) {
-        for (String sweepType : Arrays.asList("sweep_string", "sweep_dirt")) {
+        for (String sweepType : Arrays.asList("sweep_string", "sweep_dirt","sweep_sand")) {
             if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptypetags/" + sweepType)))) {
                 return Optional.of(sweepType);
             }
