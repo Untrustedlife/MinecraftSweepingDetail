@@ -70,6 +70,11 @@ import java.util.Optional;
 public class BroomItem extends SwordItem  {
     private final int burnTicks;
     private final int sweepUseTime;
+    //Arcadey streak
+    private int oneHitCleanStreak = 0;
+    private long lastSweepTime = 0;
+    private static final long STREAK_EXPIRATION_TIME = 2000L; // 2 seconds
+
     public BroomItem(Properties properties,int burnTimeInTicks, int sweepUseTimeInTicks) {
          super(Tiers.WOOD, 4, -2.4F,properties);
          this.burnTicks = burnTimeInTicks;
@@ -90,7 +95,7 @@ public class BroomItem extends SwordItem  {
                     //Need to do tag logic here
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), SweepingDetailSoundRegistry.SWEEP_SOUND.get(), SoundSource.PLAYERS, 0.15f+(float)UntrustedDiceRolling.generateNormalizedValueBetween(0.07), 1.5f+((float)UntrustedDiceRolling.generateRangeNegativeOneToOne()/2));
                     RunSweepRoutineBasedOnTags(level,player,context);
-                    player.getCooldowns().addCooldown(this, sweepUseTime); // 20 ticks = 1 second
+                    player.getCooldowns().addCooldown(this, Math.max(5,sweepUseTime-oneHitCleanStreak));
                 }
                 return InteractionResult.SUCCESS;
              }
@@ -201,12 +206,6 @@ public class BroomItem extends SwordItem  {
 
     // Map stores the block position and a pair of sweeping progress and block state.
     private final Map<BlockPos, Pair<Integer, BlockState>> sweepingProgressMap = new HashMap<>();
-
-    //Arcadey streak
-    private int oneHitCleanStreak = 0;
-    private long lastSweepTime = 0;
-    private static final long STREAK_EXPIRATION_TIME = 2000L; // 2 seconds
-
     // Helper method to process the sweeping and run the loot table
     private void processSweeping(Level level, Player player, UseOnContext context, ResourceLocation lootTableLocation) {
         //This is all very mesy and needs to be seperated out into other functions
@@ -233,10 +232,14 @@ public class BroomItem extends SwordItem  {
         sweepingProgressMap.put(pos, Pair.of(currentSweeps, currentState));
         // Display progress to the player
         int timeLeft = Math.max(1, requiredSweeps - currentSweeps);
+
+        //Core streak logic, could add soom kind of feature that improves loot quality with streaks or something
         long currentTime = System.currentTimeMillis();
-        if (currentTime-lastSweepTime < STREAK_EXPIRATION_TIME){
+        if (currentTime-lastSweepTime > STREAK_EXPIRATION_TIME){
             oneHitCleanStreak=0;
         }
+        lastSweepTime=System.currentTimeMillis();
+
         if (currentSweeps >= requiredSweeps) {
             if (requiredSweeps <= 1){
                 if (oneHitCleanStreak > 0){
