@@ -1,5 +1,10 @@
 package untrustedlife.mods.minecraftsweepingdetail;
 
+/**
+ * Helper functions.
+ *
+ * @author Untrustedlife
+ */
 public class UntrustedDiceRolling {
     /**
      * This function returns a number between 1 (inclusive) and maxDice (inclusive)

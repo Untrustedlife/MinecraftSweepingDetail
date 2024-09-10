@@ -5,6 +5,7 @@
       "minecraft:grass_block",
       "minecraft:dirt",
       "minecraft:sand",
-      "minecraft:red_sand"
+      "minecraft:red_sand",
+      "minecraft:coarse_dirt"
     ]
 }

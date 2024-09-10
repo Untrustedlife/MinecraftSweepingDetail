@@ -3,7 +3,6 @@
     "values": [
       "minecraft:cobweb",
       "minecraft:dirt",
-      "minecraft:sand",
-      "minecraft:red_sand"
+      "minecraft:rooted_dirt"
     ]
   }

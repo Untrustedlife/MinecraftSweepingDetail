@@ -95,7 +95,7 @@ public class BroomItem extends SwordItem  {
                 if (!level.isClientSide){
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), SweepingDetailSoundRegistry.SWEEP_SOUND.get(), SoundSource.PLAYERS, 0.15f+(float)UntrustedDiceRolling.generateNormalizedValueBetween(0.07), 1.5f+((float)UntrustedDiceRolling.generateRangeNegativeOneToOne()/2));
                     RunSweepRoutineBasedOnTags(level,player,context);
-                    player.getCooldowns().addCooldown(this, Math.max(5,sweepUseTime-oneHitCleanStreak));
+                    player.getCooldowns().addCooldown(this, Math.max(7,sweepUseTime-oneHitCleanStreak));
                 }
                 return InteractionResult.SUCCESS;
              }
