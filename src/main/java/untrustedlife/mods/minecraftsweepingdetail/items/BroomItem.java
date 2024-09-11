@@ -9,21 +9,15 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import untrustedlife.mods.minecraftsweepingdetail.UntrustedDiceRolling;
 import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
-import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.math.Vector3f;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -74,12 +68,22 @@ import java.util.Optional;
  * @author Untrustedlife
  */
 public class BroomItem extends SwordItem  {
+    
+    //Constants
+    protected static final long STREAK_EXPIRATION_TIME = 1050L; // little over 1 second
+    private static final float INSTANT_BREAK_SPEED = 99999.0F;
+    protected static final int MAX_SWEEP_AMOUNT = 20;
+    protected static final int MIN_COOLDOWN_TIME = 7;
+
+    //Alterables
     protected final int burnTicks;
     protected final int sweepUseTime;
+
     //Arcade streak
     protected int oneHitCleanStreak = 0;
     protected long lastSweepTime = 0;
-    protected static final long STREAK_EXPIRATION_TIME = 1050L; // little over 1 second
+
+
 
     public BroomItem(Properties properties,int burnTimeInTicks, int sweepUseTimeInTicks) {
          super(Tiers.WOOD, 4, -2.4F,properties);
@@ -89,20 +93,19 @@ public class BroomItem extends SwordItem  {
 
     @Override
     public float getDestroySpeed(ItemStack itemStack, BlockState state) {
-    if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweepable")))) {
-        return 99999.0F;
+    if (isSweepableBlock(state)) {
+        return INSTANT_BREAK_SPEED;
     }
     return super.getDestroySpeed(itemStack, state);
    }
 
 
-    //prevent accidental harvesting oof sweepable blocks the normal way
+    // Prevent normal block-breaking for sweepable blocks
     @Override
     public boolean onBlockStartBreak(ItemStack itemStack, BlockPos pos, Player player) {
         Level level = player.getLevel();
         BlockState state = level.getBlockState(pos);
-        // Check if the block is "sweepable"
-        if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweepable")))) {
+        if (isSweepableBlock(state)) {
             // Return true to prevent the block from breaking
             return true;
         }
@@ -114,8 +117,7 @@ public class BroomItem extends SwordItem  {
 
     @Override
     public boolean canAttackBlock(BlockState state, Level level, BlockPos pos, Player player) {
-        // Check if the block is "sweepable"
-        if (level.getBlockState(pos).is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweepable")))) {
+        if (isSweepableBlock(level.getBlockState(pos))) {
             if (player.getCooldowns().isOnCooldown(this)) {
                 return false; // Prevent sweeping if the item is on cooldown
             }
@@ -129,13 +131,12 @@ public class BroomItem extends SwordItem  {
                 if (result == InteractionResult.SUCCESS) {
                     if (oneHitCleanStreak <= 2){
                         player.getCooldowns().removeCooldown(this);
-                        player.getCooldowns().addCooldown(this, Math.max(7,sweepUseTime-2));
+                        player.getCooldowns().addCooldown(this, Math.max(MIN_COOLDOWN_TIME,sweepUseTime-2));
                     }
                     return false; // Cancels normal block breaking
                 }
             }
         }
-    
         // If the block isn't sweepable, return true to allow block breaking
         return true;
     }
@@ -146,15 +147,14 @@ public class BroomItem extends SwordItem  {
         Level level = context.getLevel();
         Player player = context.getPlayer();
         if (player != null) {
-            //If item is 'sweepable' it should be swept 
-            if (level.getBlockState(context.getClickedPos()).is(BlockTags.create(new ResourceLocation("ulsmsd","sweeptiertags/sweepable")))) {
+            if (isSweepableBlock(level.getBlockState(context.getClickedPos()))) {
                 if (level.isClientSide){
                     generateSweepParticles(player,level,context);
                 }
                 if (!level.isClientSide){
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), SweepingDetailSoundRegistry.SWEEP_SOUND.get(), SoundSource.PLAYERS, 0.15f+(float)UntrustedDiceRolling.generateNormalizedValueBetween(0.07), 1.5f+((float)UntrustedDiceRolling.generateRangeNegativeOneToOne()/2));
                     RunSweepRoutineBasedOnTags(level,player,context);
-                    player.getCooldowns().addCooldown(this, Math.max(7,sweepUseTime-oneHitCleanStreak));
+                    player.getCooldowns().addCooldown(this, Math.max(MIN_COOLDOWN_TIME,sweepUseTime-oneHitCleanStreak));
                 }
                 return InteractionResult.SUCCESS;
              }
@@ -175,6 +175,11 @@ public class BroomItem extends SwordItem  {
      @Override
     public int getBurnTime(ItemStack itemStack, RecipeType<?> recipeType) {
         return this.burnTicks;
+    }
+
+    // Helper method to check sweepable block
+    private boolean isSweepableBlock(BlockState state) {
+        return state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweepable")));
     }
 
     //TODO: Possibly use tags to change this too
@@ -404,14 +409,13 @@ public class BroomItem extends SwordItem  {
     }
 
     protected int getSweepAmountFromBlock(BlockState state) {
-        // Loop through possible sweep amounts (up to 20)
-        for (int i = 1; i <= 20; i++) {  // Adjust this upper limit as needed
+        // Loop through possible sweep amounts
+        for (int i = 1; i <= MAX_SWEEP_AMOUNT; i++) {  // Adjust this upper limit as needed
             ResourceLocation tag = new ResourceLocation("ulsmsd", "sweeptimetags/sweep_" + i + "_sweeps");
             if (state.is(BlockTags.create(tag))) {
                 return i;  // Return the sweep amount based on the tag
             }
         }
-        
         // Default to 1 sweep if no tag is found
         return 1;
     }

@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
-        "MODID"
+        "MODID",
+        "Sweepable"
     ],
     "java.compile.nullAnalysis.mode": "disabled"
 }
