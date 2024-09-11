@@ -1,4 +1,5 @@
 package untrustedlife.mods.minecraftsweepingdetail.items;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -8,10 +9,15 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import untrustedlife.mods.minecraftsweepingdetail.UntrustedDiceRolling;
 import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
 import com.mojang.blaze3d.platform.InputConstants;
@@ -81,6 +87,60 @@ public class BroomItem extends SwordItem  {
          this.burnTicks = burnTimeInTicks;
          this.sweepUseTime = sweepUseTimeInTicks;
     }
+
+    @Override
+    public float getDestroySpeed(ItemStack itemStack, BlockState state) {
+    if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweepable")))) {
+        return 99999.0F;
+    }
+    return super.getDestroySpeed(itemStack, state);
+   }
+
+
+    //prevent accidental harvesting oof sweepable blocks the normal way
+    @Override
+    public boolean onBlockStartBreak(ItemStack itemStack, BlockPos pos, Player player) {
+        Level level = player.getLevel();
+        BlockState state = level.getBlockState(pos);
+        // Check if the block is "sweepable"
+        if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweepable")))) {
+            // Return true to prevent the block from breaking
+            return true;
+        }
+        // Allow normal block-breaking for non-sweepable blocks
+        return super.onBlockStartBreak(itemStack, pos, player);
+    }
+
+
+
+    @Override
+    public boolean canAttackBlock(BlockState state, Level level, BlockPos pos, Player player) {
+        // Check if the block is "sweepable"
+        if (level.getBlockState(pos).is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweepable")))) {
+            if (player.getCooldowns().isOnCooldown(this)) {
+                return false; // Prevent sweeping if the item is on cooldown
+            }
+            else {
+                InteractionHand hand = InteractionHand.MAIN_HAND; // or off-hand if applicable
+                BlockHitResult hitResult = new BlockHitResult(player.getLookAngle(), player.getDirection(), pos, false);
+                UseOnContext context = new UseOnContext(player, hand, hitResult);
+                // Reuse the logic from useOn by calling it directly
+                InteractionResult result = useOn(context);
+                // If sweeping was successful, return true to prevent block breaking
+                if (result == InteractionResult.SUCCESS) {
+                    if (oneHitCleanStreak <= 2){
+                        player.getCooldowns().removeCooldown(this);
+                        player.getCooldowns().addCooldown(this, Math.max(7,sweepUseTime-2));
+                    }
+                    return false; // Cancels normal block breaking
+                }
+            }
+        }
+    
+        // If the block isn't sweepable, return true to allow block breaking
+        return true;
+    }
+
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
@@ -164,16 +224,6 @@ public class BroomItem extends SwordItem  {
             level.addParticle(new DustParticleOptions(new Vector3f(0, 0.5F, 0.1F), 1.0F), xPos, yPos, zPos, xSpeed, ySpeed, zSpeed);
         }
     }
-
-
-
-    // Helper method to check if Alt is pressed
-    private boolean isAltKeyPressed() {
-        long windowHandle = Minecraft.getInstance().getWindow().getWindow();
-        // Check if the left Alt key is pressed
-        return InputConstants.isKeyDown(windowHandle, InputConstants.KEY_LALT);
-    }
-
     
     public void RunSweepRoutineBasedOnTags(Level level, Player player, UseOnContext context) {
         BlockState state = level.getBlockState(context.getClickedPos());
