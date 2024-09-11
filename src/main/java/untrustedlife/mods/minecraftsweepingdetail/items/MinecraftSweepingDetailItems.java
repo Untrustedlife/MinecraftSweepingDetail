@@ -20,8 +20,9 @@ public class MinecraftSweepingDetailItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MinecraftSweepingDetail.MODID);
     // Register your custom broom item
     public static final RegistryObject<Item> BROOM = ITEMS.register("straw_broom",
-        () -> new BroomItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(100),200,20));
-
+        () -> new BroomItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(100),200,20,0));
+    public static final RegistryObject<Item> BUNDLESTICKS = ITEMS.register("bundle_of_sticks",
+        () -> new BroomItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(15),350,30,-2));
     // Create a custom Creative Mode Tab
     public static final CreativeModeTab SWEEPING_TAB = new CreativeModeTab("sweepingtab") {
         @Override

@@ -153,12 +153,14 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/lang/en_us.json
   assets/ulsmsd/models/
   assets/ulsmsd/models/item/
+  assets/ulsmsd/models/item/bundle_of_sticks.json
   assets/ulsmsd/models/item/straw_broom.json
   assets/ulsmsd/sounds.json
   assets/ulsmsd/sounds/
   assets/ulsmsd/sounds/sweep_sound.ogg
   assets/ulsmsd/textures/
   assets/ulsmsd/textures/item/
+  assets/ulsmsd/textures/item/bundle_of_sticks.png
   assets/ulsmsd/textures/item/straw_broom.png
   broom_icon.png
   data/
@@ -168,6 +170,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/loot_tables/blocks/dirt_sweeping.json
   data/ulsmsd/loot_tables/blocks/sand_sweeping.json
   data/ulsmsd/recipes/
+  data/ulsmsd/recipes/bundle_of_sticks_recipe.json
   data/ulsmsd/recipes/straw_broom_recipe.json
   data/ulsmsd/tags/
   data/ulsmsd/tags/blocks/

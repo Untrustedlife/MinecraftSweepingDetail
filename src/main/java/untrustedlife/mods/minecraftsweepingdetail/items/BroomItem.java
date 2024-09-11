@@ -68,7 +68,7 @@ import java.util.Optional;
  * @author Untrustedlife
  */
 public class BroomItem extends SwordItem  {
-    
+
     //Constants
     protected static final long STREAK_EXPIRATION_TIME = 1050L; // little over 1 second
     private static final float INSTANT_BREAK_SPEED = 99999.0F;
@@ -85,11 +85,12 @@ public class BroomItem extends SwordItem  {
 
 
 
-    public BroomItem(Properties properties,int burnTimeInTicks, int sweepUseTimeInTicks) {
-         super(Tiers.WOOD, 4, -2.4F,properties);
+    public BroomItem(Properties properties,int burnTimeInTicks, int sweepUseTimeInTicks, int bonusDamage) {
+         super(Tiers.WOOD, 4+bonusDamage, -2.4F,properties);
          this.burnTicks = burnTimeInTicks;
          this.sweepUseTime = sweepUseTimeInTicks;
     }
+
 
     @Override
     public float getDestroySpeed(ItemStack itemStack, BlockState state) {

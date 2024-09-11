@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
-      "ulsmod:straw_broom"
+      "ulsmsd:straw_broom",
+      "ulsmsd:bundle_of_sticks"
     ]
   }

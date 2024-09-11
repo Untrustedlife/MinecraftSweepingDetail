@@ -4,6 +4,7 @@
       "minecraft:wheat",
       "minecraft:grass",
       "minecraft:fern",
-      "minecraft:dead_bush"
+      "minecraft:dead_bush",
+      "ulsmsd:bundle_of_sticks"
     ]
   }
