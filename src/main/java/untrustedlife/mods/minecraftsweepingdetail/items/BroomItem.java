@@ -74,13 +74,12 @@ import java.util.Optional;
  * @author Untrustedlife
  */
 public class BroomItem extends SwordItem  {
-    private final int burnTicks;
-    private final int sweepUseTime;
-
+    protected final int burnTicks;
+    protected final int sweepUseTime;
     //Arcade streak
-    private int oneHitCleanStreak = 0;
-    private long lastSweepTime = 0;
-    private static final long STREAK_EXPIRATION_TIME = 1050L; // little over 1 second
+    protected int oneHitCleanStreak = 0;
+    protected long lastSweepTime = 0;
+    protected static final long STREAK_EXPIRATION_TIME = 1050L; // little over 1 second
 
     public BroomItem(Properties properties,int burnTimeInTicks, int sweepUseTimeInTicks) {
          super(Tiers.WOOD, 4, -2.4F,properties);
@@ -179,7 +178,7 @@ public class BroomItem extends SwordItem  {
     }
 
     //TODO: Possibly use tags to change this too
-    public void generateSweepParticles( Player player, Level level , UseOnContext context){
+    protected void generateSweepParticles( Player player, Level level , UseOnContext context){
         Direction clickedFace = context.getClickedFace();
         BlockPos clickedPos = context.getClickedPos();
         for (int i = 0; i < 20; i++) {  // Increase particles for visibility
@@ -225,7 +224,7 @@ public class BroomItem extends SwordItem  {
         }
     }
     
-    public void RunSweepRoutineBasedOnTags(Level level, Player player, UseOnContext context) {
+    protected void RunSweepRoutineBasedOnTags(Level level, Player player, UseOnContext context) {
         BlockState state = level.getBlockState(context.getClickedPos());
         
         // Use a data-driven approach to map sweep types to their corresponding loot tables
@@ -244,7 +243,7 @@ public class BroomItem extends SwordItem  {
     }
 
     // Helper method to get the sweep type from block state using tags
-    private Optional<String> getSweepTypeFromState(BlockState state) {
+    protected Optional<String> getSweepTypeFromState(BlockState state) {
         for (String sweepType : Arrays.asList("sweep_string", "sweep_dirt","sweep_sand")) {
             if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptypetags/" + sweepType)))) {
                 return Optional.of(sweepType);
@@ -253,42 +252,9 @@ public class BroomItem extends SwordItem  {
         return Optional.empty();
     }
 
-    // Map stores the block position and a pair of sweeping progress and block state.
-    private final Map<BlockPos, Pair<Integer, BlockState>> sweepingProgressMap = new HashMap<>();
-
-    // Helper method to process the sweeping and run the loot table
-    private void processSweeping(Level level, Player player, UseOnContext context, ResourceLocation lootTableLocation) {
-        //This is all very messy and needs to be seperated out into other functions
-        BlockPos pos = context.getClickedPos();
-        BlockState currentState = level.getBlockState(pos);
-        // Retrieve broom and block tiers
-        int broomTier = getTierFromTool(context.getItemInHand());
-        int blockTier = getTierFromBlock(currentState);
-
-        // Determine the required number of sweeps for this block and broom combo
-        int baseSweeps = getSweepAmountFromBlock(currentState); 
-        int requiredSweeps = calculateSweepsRequired(blockTier, broomTier, baseSweeps);
-
-        // Check if the block is in the map and reset if the block type has changed
-        Pair<Integer, BlockState> progressData = sweepingProgressMap.get(pos);
-        if (progressData != null && !progressData.getSecond().equals(currentState)) {
-            // Block type has changed, reset progress
-            sweepingProgressMap.remove(pos);
-            progressData = null;
-        }
-
-        // Get or initialize sweeping progress
-        int currentSweeps = progressData != null ? progressData.getFirst() : 0;
-        currentSweeps++;
-        sweepingProgressMap.put(pos, Pair.of(currentSweeps, currentState));
+    //Helper method that informs player of progress
+    protected void tellPlayerSweepInfo(int currentSweeps, int requiredSweeps, Player player){
         int timeLeft = Math.max(1, requiredSweeps - currentSweeps);
-
-        //Core streak logic, the higher the streak the faster you sweep!
-        long currentTime = System.currentTimeMillis();
-        if (currentTime-lastSweepTime > STREAK_EXPIRATION_TIME){
-            oneHitCleanStreak=0;
-        }
-        lastSweepTime=System.currentTimeMillis();
         if (currentSweeps >= requiredSweeps) {
             if (requiredSweeps <= 1){
                 if (oneHitCleanStreak > 0){
@@ -328,6 +294,47 @@ public class BroomItem extends SwordItem  {
             player.displayClientMessage(Component.literal("§cThis might take a while. " + timeLeft + " sweeps left."), true);
         }
 
+    }
+
+    // Map stores the block position and a pair of sweeping progress and block state.
+    protected final Map<BlockPos, Pair<Integer, BlockState>> sweepingProgressMap = new HashMap<>();
+
+    // Helper method to process the sweeping and run the loot table
+    protected void processSweeping(Level level, Player player, UseOnContext context, ResourceLocation lootTableLocation) {
+        //This is all very messy and needs to be seperated out into other functions
+        BlockPos pos = context.getClickedPos();
+        BlockState currentState = level.getBlockState(pos);
+        // Retrieve broom and block tiers
+        int broomTier = getTierFromTool(context.getItemInHand());
+        int blockTier = getTierFromBlock(currentState);
+
+        // Determine the required number of sweeps for this block and broom combo
+        int baseSweeps = getSweepAmountFromBlock(currentState); 
+        int requiredSweeps = calculateSweepsRequired(blockTier, broomTier, baseSweeps);
+
+        // Check if the block is in the map and reset if the block type has changed
+        Pair<Integer, BlockState> progressData = sweepingProgressMap.get(pos);
+        if (progressData != null && !progressData.getSecond().equals(currentState)) {
+            // Block type has changed, reset progress
+            sweepingProgressMap.remove(pos);
+            progressData = null;
+        }
+
+        // Get or initialize sweeping progress
+        int currentSweeps = progressData != null ? progressData.getFirst() : 0;
+        currentSweeps++;
+        sweepingProgressMap.put(pos, Pair.of(currentSweeps, currentState));
+
+        //Core streak logic, the higher the streak the faster you sweep!
+        long currentTime = System.currentTimeMillis();
+        if (currentTime-lastSweepTime > STREAK_EXPIRATION_TIME){
+            oneHitCleanStreak=0;
+        }
+        lastSweepTime=System.currentTimeMillis();
+
+        //Text to tell player whats left for their sweeping
+        tellPlayerSweepInfo(currentSweeps,requiredSweeps,player);
+
         player.swing(context.getHand(), true);
         context.getItemInHand().hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(context.getHand()));
 
@@ -356,9 +363,8 @@ public class BroomItem extends SwordItem  {
         }
     }
 
-
     // Method to calculate the number of sweeps required based on block and broom tiers
-    private int calculateSweepsRequired(int blockTier, int broomTier, int baseSweeps) {
+    protected int calculateSweepsRequired(int blockTier, int broomTier, int baseSweeps) {
         if (broomTier < blockTier) {
             int tierDifference = blockTier - broomTier;
             return baseSweeps * (int) Math.pow(3, tierDifference);  // Multiply by 3 for each tier difference
@@ -371,7 +377,7 @@ public class BroomItem extends SwordItem  {
     }
 
     // Retrieves the broom tier based on the item in hand (tool tier)
-    private int getTierFromTool(ItemStack tool) {
+    protected int getTierFromTool(ItemStack tool) {
         if (tool.is(ItemTags.create(new ResourceLocation("ulsmsd", "broomtiers/broomtier1")))) {
             return 1;
         }
@@ -386,7 +392,7 @@ public class BroomItem extends SwordItem  {
     }
 
     // Retrieves the block tier based on the block tags
-    private int getTierFromBlock(BlockState state) {
+    protected int getTierFromBlock(BlockState state) {
         if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweeptier_1")))) {
             return 1;
         } else if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweeptier_2")))) {
@@ -397,7 +403,7 @@ public class BroomItem extends SwordItem  {
         return 1;  // Default to tier 1 if not found
     }
 
-    private int getSweepAmountFromBlock(BlockState state) {
+    protected int getSweepAmountFromBlock(BlockState state) {
         // Loop through possible sweep amounts (up to 20)
         for (int i = 1; i <= 20; i++) {  // Adjust this upper limit as needed
             ResourceLocation tag = new ResourceLocation("ulsmsd", "sweeptimetags/sweep_" + i + "_sweeps");
@@ -409,8 +415,5 @@ public class BroomItem extends SwordItem  {
         // Default to 1 sweep if no tag is found
         return 1;
     }
-
-    
-
 
 }
