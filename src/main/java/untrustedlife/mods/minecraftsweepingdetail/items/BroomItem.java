@@ -91,6 +91,12 @@ public class BroomItem extends SwordItem  {
          this.sweepUseTime = sweepUseTimeInTicks;
     }
 
+    public BroomItem(Properties properties,int burnTimeInTicks, int sweepUseTimeInTicks, int bonusDamage, float attackSpeed) {
+        super(Tiers.WOOD, 4+bonusDamage, attackSpeed,properties);
+        this.burnTicks = burnTimeInTicks;
+        this.sweepUseTime = sweepUseTimeInTicks;
+   }
+
 
     @Override
     public float getDestroySpeed(ItemStack itemStack, BlockState state) {

@@ -36,6 +36,24 @@ public class BroomSword extends BroomItem {
         this.myEffects=effects;
     }
  
+    /**
+     * Constructs a {@code BroomSword} with custom attack speed, bonus damage, and a list of effects.
+     * The base attack speed is adjusted relative to -2.4, which is the default attack speed for a wooden sword.
+     * This allows you to create brooms with different attack speeds relative to standard weapons.
+     *
+     * @param properties              The item properties (durability, tab, etc.).
+     * @param burnTimeInTicks         The burn time of the broom sword in ticks when used as fuel.
+     * @param sweepUseTimeInTicks     The time it takes to sweep in ticks.
+     * @param bonusDamage             Additional damage dealt by the broom sword in combat.
+     * @param attackSpeed             The custom attack speed, relative to the base value of -2.4 (equal to a wooden sword).
+     *                                Positive values increase the speed, negative values make it slower.
+     * @param effects                 A list of {@link GarbageEffectData} that define the effects applied to enemies
+     *                                when the broom sword hits a target.
+     */
+    public BroomSword(Properties properties, int burnTimeInTicks, int sweepUseTimeInTicks, int bonusDamage, float attackSpeed, List<GarbageEffectData> effects) {
+        super(properties, burnTimeInTicks, sweepUseTimeInTicks, bonusDamage, -2.4f - attackSpeed);
+        this.myEffects = effects;
+    }
 
     /**
      * Applies effects to the enemy when the sword hits a target.
