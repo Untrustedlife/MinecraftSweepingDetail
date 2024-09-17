@@ -25,6 +25,13 @@ public class BaseGarbageItem extends Item {
     }
     
     /**
+     * Constructs a new non-food {@code BaseGarbageItem}.
+    */
+    public BaseGarbageItem(Properties properties) {
+        super(properties);
+    }
+
+    /**
      * Creates and configures the food properties for this item, including nutrition, saturation, meat status, 
      * and any custom effects that should apply when the item is consumed.
      *
