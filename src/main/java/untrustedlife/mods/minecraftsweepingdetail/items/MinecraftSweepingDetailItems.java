@@ -29,11 +29,13 @@ public class MinecraftSweepingDetailItems {
     /*Actual Brooms */
     public static final RegistryObject<Item> BROOM = ITEMS.register("straw_broom",
         () -> new BroomItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(100),200,20,0));
+    
     public static final RegistryObject<Item> BUNDLESTICKS = ITEMS.register("bundle_of_sticks",
         () -> new BroomItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(15),350,30,-2));
+    
     /*Useful Items */
     public static final RegistryObject<Item> ICICLE = ITEMS.register("icicle",
-    () -> new BroomSword(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(30),0,30,0,List.of(
+    () -> new BroomSword(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(30),0,30,1,List.of(
         new GarbageEffectData(MobEffects.MOVEMENT_SLOWDOWN, 200, 0, 1f)
     )));
 
@@ -59,18 +61,23 @@ public class MinecraftSweepingDetailItems {
         new GarbageEffectData(MobEffects.MOVEMENT_SPEED, 400, 1, 1f)
     )));
 
-    public static final RegistryObject<Item> FROST_BERRY = ITEMS.register("frost_berry",
+    public static final RegistryObject<Item> FROST_BERRY = ITEMS.register("frost_berries",
     () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 3, 0.8f, false, List.of(
         new GarbageEffectData(MobEffects.SATURATION, 4, 0, 1f)
     )));
 
+    public static final RegistryObject<Item> PLAIN_ICECREAM = ITEMS.register("plain_icecream",
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 8, 1.2f, false, List.of(
+        new GarbageEffectData(MobEffects.FIRE_RESISTANCE, 200, 0, 1f)
+    )));
+
     public static final RegistryObject<Item> FROST_BERRY_ICECREAM = ITEMS.register("frost_berry_icecream",
-    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 6, 1.2f, false, List.of(
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 8, 1.2f, false, List.of(
         new GarbageEffectData(MobEffects.SATURATION, 6, 0, 1f)
     )));
 
     public static final RegistryObject<Item> FROST_ROOT_ICECREAM = ITEMS.register("frost_root_icecream",
-    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 6, 1.2f, false, List.of(
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 8, 1.2f, false, List.of(
         new GarbageEffectData(MobEffects.MOVEMENT_SPEED, 800, 1, 1f)
     )));
 

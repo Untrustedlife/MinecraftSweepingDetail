@@ -140,6 +140,7 @@ Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/it
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomItem/getDestroySpeed(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/block/state/BlockState;)F from net/minecraft/world/item/SwordItem/getDestroySpeed(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/block/state/BlockState;)F: getDestroySpeed -> m_8102_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomItem/getUseDuration(Lnet/minecraft/world/item/ItemStack;)I from net/minecraft/world/item/Item/getUseDuration(Lnet/minecraft/world/item/ItemStack;)I: getUseDuration -> m_8105_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;: useOn -> m_6225_
+Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomSword/hurtEnemy(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z from net/minecraft/world/item/SwordItem/hurtEnemy(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z: hurtEnemy -> m_7579_
 Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
 Adding extras
 Sorting
@@ -154,6 +155,12 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/models/
   assets/ulsmsd/models/item/
   assets/ulsmsd/models/item/bundle_of_sticks.json
+  assets/ulsmsd/models/item/frost_berries.json
+  assets/ulsmsd/models/item/frost_berry_icecream.json
+  assets/ulsmsd/models/item/frost_root.json
+  assets/ulsmsd/models/item/frost_root_icecream.json
+  assets/ulsmsd/models/item/icicle.json
+  assets/ulsmsd/models/item/plain_icecream.json
   assets/ulsmsd/models/item/straw_broom.json
   assets/ulsmsd/sounds.json
   assets/ulsmsd/sounds/
@@ -161,16 +168,39 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/textures/
   assets/ulsmsd/textures/item/
   assets/ulsmsd/textures/item/bundle_of_sticks.png
+  assets/ulsmsd/textures/item/frost_berries.png
+  assets/ulsmsd/textures/item/frost_berry_icecream.png
+  assets/ulsmsd/textures/item/frost_root.png
+  assets/ulsmsd/textures/item/frost_root_icecream.png
+  assets/ulsmsd/textures/item/icicle.png
+  assets/ulsmsd/textures/item/plain_icecream.png
   assets/ulsmsd/textures/item/straw_broom.png
   broom_icon.png
   data/
+  data/forge/
+  data/forge/tags/
+  data/forge/tags/items/
+  data/forge/tags/items/berries.json
+  data/forge/tags/items/crops.json
+  data/forge/tags/items/food/
+  data/forge/tags/items/food/raw.json
+  data/forge/tags/items/fruits.json
+  data/forge/tags/items/milk.json
+  data/forge/tags/items/tools/
+  data/forge/tags/items/tools/knvives.json
+  data/forge/tags/items/tools/swords.json
+  data/forge/tags/items/vinegar_ingredients.json
   data/ulsmsd/
   data/ulsmsd/loot_tables/
   data/ulsmsd/loot_tables/blocks/
   data/ulsmsd/loot_tables/blocks/dirt_sweeping.json
   data/ulsmsd/loot_tables/blocks/sand_sweeping.json
+  data/ulsmsd/loot_tables/blocks/snow_sweeping.json
   data/ulsmsd/recipes/
   data/ulsmsd/recipes/bundle_of_sticks_recipe.json
+  data/ulsmsd/recipes/frost_berry_ice_cream_recipe.json
+  data/ulsmsd/recipes/frost_root_ice_cream_recipe.json
+  data/ulsmsd/recipes/plain_ice_cream_recipe.json
   data/ulsmsd/recipes/straw_broom_recipe.json
   data/ulsmsd/tags/
   data/ulsmsd/tags/blocks/
@@ -193,6 +223,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_dust.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_sand.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_slime.json
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_snow.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_string.json
   data/ulsmsd/tags/items/
   data/ulsmsd/tags/items/broomtiers/
@@ -210,8 +241,11 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   untrustedlife/mods/minecraftsweepingdetail/data/
   untrustedlife/mods/minecraftsweepingdetail/data/SweepingDetailSoundDefinitions.class
   untrustedlife/mods/minecraftsweepingdetail/items/
+  untrustedlife/mods/minecraftsweepingdetail/items/BaseGarbageItem.class
   untrustedlife/mods/minecraftsweepingdetail/items/BroomItem$1.class
   untrustedlife/mods/minecraftsweepingdetail/items/BroomItem.class
+  untrustedlife/mods/minecraftsweepingdetail/items/BroomSword.class
+  untrustedlife/mods/minecraftsweepingdetail/items/GarbageEffectData.class
   untrustedlife/mods/minecraftsweepingdetail/items/MinecraftSweepingDetailItems$1.class
   untrustedlife/mods/minecraftsweepingdetail/items/MinecraftSweepingDetailItems.class
   untrustedlife/mods/minecraftsweepingdetail/sounds/

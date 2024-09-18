@@ -24,6 +24,18 @@ public class BaseGarbageItem extends Item {
         super(properties.food(createFoodProperties(nutrition,saturation,meat,effects)));
     }
     
+     /**
+     * Constructs a new {@code BaseGarbageItem}.
+     *
+     * @param properties The general properties of the item, such as stack size or rarity.
+     * @param nutrition  The amount of hunger restored by consuming this item.
+     * @param saturation The saturation modifier, affecting how long the player remains full after consuming the item.
+     * @param meat       If {@code true}, the item is considered meat, and will be recognized as such by in-game mechanics (e.g., wolves eating it)..
+     */
+    public BaseGarbageItem(Properties properties, int nutrition, float saturation, boolean meat) {
+        super(properties.food(createFoodProperties(nutrition,saturation,meat)));
+    }
+
     /**
      * Constructs a new non-food {@code BaseGarbageItem}.
     */
@@ -54,6 +66,25 @@ public class BaseGarbageItem extends Item {
        
         }
 
+        return prop.build();
+    }
+
+     /**
+     * Creates and configures the food properties for this item, including nutrition, saturation, meat status, 
+     * and any custom effects that should apply when the item is consumed.
+     *
+     * @param nutrition  The amount of hunger restored by consuming the item.
+     * @param saturation The saturation modifier, affecting how long the player remains full after consuming the item.
+     * @param meat       If {@code true}, the item is considered meat, triggering specific in-game behaviors (e.g., wolves eating the item).
+     * @return A {@code FoodProperties} object, which holds all the food-related properties of the item.
+     */
+    private static FoodProperties createFoodProperties(int nutrition, float saturation, boolean meat) {
+        FoodProperties.Builder prop = new FoodProperties.Builder()
+            .nutrition(nutrition)
+            .saturationMod(saturation);
+        if (meat){
+            prop.meat();
+        }
         return prop.build();
     }
 }

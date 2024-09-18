@@ -1,6 +1,12 @@
 {
+    "item.ulsmsd.icicle": "Icicle",
     "item.ulsmsd.straw_broom": "Straw Broom",
     "item.ulsmsd.bundle_of_sticks":"Stundle",
     "itemGroup.sweepingtab": "Sweeping Detail",
+    "item.ulsmsd.frost_berries":"Frost Berries",
+    "item.ulsmsd.frost_root":"Frost Root",
+    "item.ulsmsd.plain_icecream":"Plain Icecream",
+    "item.ulsmsd.frost_berry_icecream":"Frost Berry Icecream",
+    "item.ulsmsd.frost_root_icecream":"Frost Root Icecream",
     "ulsmsd.sweep_sound": "*scritch*"
   }

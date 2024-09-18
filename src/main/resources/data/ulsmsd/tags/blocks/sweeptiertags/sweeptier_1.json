@@ -6,6 +6,8 @@
       "minecraft:dirt",
       "minecraft:sand",
       "minecraft:red_sand",
-      "minecraft:coarse_dirt"
+      "minecraft:coarse_dirt",
+      "minecraft:snow",
+      "minecraft:snow_block"
     ]
 }
