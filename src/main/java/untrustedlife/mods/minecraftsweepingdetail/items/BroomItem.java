@@ -14,15 +14,10 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import untrustedlife.mods.minecraftsweepingdetail.UntrustedDiceRolling;
 import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.math.Vector3f;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -251,7 +246,9 @@ public class BroomItem extends SwordItem  {
             "sweep_string", new ResourceLocation("minecraft:blocks/cobweb"),
             "sweep_dirt", new ResourceLocation("ulsmsd:blocks/dirt_sweeping"),
             "sweep_sand", new ResourceLocation("ulsmsd:blocks/sand_sweeping"),
-            "sweep_snow", new ResourceLocation("ulsmsd:blocks/snow_sweeping")
+            "sweep_snow", new ResourceLocation("ulsmsd:blocks/snow_sweeping"),
+            "sweep_podzol", new ResourceLocation("ulsmsd:blocks/podzol_sweeping"),
+            "sweep_mycelium", new ResourceLocation("ulsmsd:blocks/mycelium_sweeping")
             // Add more sweep types and their corresponding loot tables here
         );
         
@@ -264,7 +261,7 @@ public class BroomItem extends SwordItem  {
 
     // Helper method to get the sweep type from block state using tags
     protected Optional<String> getSweepTypeFromState(BlockState state) {
-        for (String sweepType : Arrays.asList("sweep_string", "sweep_dirt","sweep_sand","sweep_snow")) {
+        for (String sweepType : Arrays.asList("sweep_string", "sweep_dirt","sweep_sand","sweep_snow","sweep_podzol","sweep_mycelium")) {
             if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptypetags/" + sweepType)))) {
                 return Optional.of(sweepType);
             }

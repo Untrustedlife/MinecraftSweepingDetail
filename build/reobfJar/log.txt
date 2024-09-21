@@ -159,6 +159,8 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/models/item/frost_berry_icecream.json
   assets/ulsmsd/models/item/frost_root.json
   assets/ulsmsd/models/item/frost_root_icecream.json
+  assets/ulsmsd/models/item/heart_root.json
+  assets/ulsmsd/models/item/heart_root_icecream.json
   assets/ulsmsd/models/item/icicle.json
   assets/ulsmsd/models/item/plain_icecream.json
   assets/ulsmsd/models/item/straw_broom.json
@@ -172,6 +174,8 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/textures/item/frost_berry_icecream.png
   assets/ulsmsd/textures/item/frost_root.png
   assets/ulsmsd/textures/item/frost_root_icecream.png
+  assets/ulsmsd/textures/item/heart_root.png
+  assets/ulsmsd/textures/item/heart_root_icecream.png
   assets/ulsmsd/textures/item/icicle.png
   assets/ulsmsd/textures/item/plain_icecream.png
   assets/ulsmsd/textures/item/straw_broom.png
@@ -194,12 +198,15 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/loot_tables/
   data/ulsmsd/loot_tables/blocks/
   data/ulsmsd/loot_tables/blocks/dirt_sweeping.json
+  data/ulsmsd/loot_tables/blocks/mycelium_sweeping.json
+  data/ulsmsd/loot_tables/blocks/podzol_sweeping.json
   data/ulsmsd/loot_tables/blocks/sand_sweeping.json
   data/ulsmsd/loot_tables/blocks/snow_sweeping.json
   data/ulsmsd/recipes/
   data/ulsmsd/recipes/bundle_of_sticks_recipe.json
   data/ulsmsd/recipes/frost_berry_ice_cream_recipe.json
   data/ulsmsd/recipes/frost_root_ice_cream_recipe.json
+  data/ulsmsd/recipes/heart_root_ice_cream_recipe.json
   data/ulsmsd/recipes/plain_ice_cream_recipe.json
   data/ulsmsd/recipes/straw_broom_recipe.json
   data/ulsmsd/tags/
@@ -221,6 +228,8 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_common_trash.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_dirt.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_dust.json
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_mycelium.json
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_podzol.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_sand.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_slime.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_snow.json

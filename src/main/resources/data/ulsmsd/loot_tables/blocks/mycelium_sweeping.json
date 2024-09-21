@@ -6,7 +6,7 @@
           {
             "type": "minecraft:item",
             "name": "minecraft:dirt",
-            "weight": 33,
+            "weight": 50,
             "functions": [
                 {
                   "function": "minecraft:set_count",
@@ -16,39 +16,11 @@
                   }
                 }
               ]
-          },
-          {
-            "type": "minecraft:item",
-            "name": "minecraft:wheat_seeds",
-            "weight": 10,
-            "functions": [
-                {
-                  "function": "minecraft:set_count",
-                  "count": {
-                    "min": 0,
-                    "max": 1
-                  }
-                }
-              ]
-          },
-          {
-            "type": "minecraft:item",
-            "name": "minecraft:poisonous_potato",
-            "weight": 5,
-            "functions": [
-              {
-                "function": "minecraft:set_count",
-                "count": {
-                  "min": 0,
-                  "max": 1
-                }
-              }
-            ]
           },
           {
             "type": "minecraft:item",
             "name": "minecraft:stick",
-            "weight": 5,
+            "weight": 10,
             "functions": [
               {
                 "function": "minecraft:set_count",
@@ -56,60 +28,6 @@
                   "min": 0,
                   "max": 1
                 }
-              }
-            ]
-          },
-          {
-            "type": "minecraft:item",
-            "name": "minecraft:flint",
-            "weight": 5,
-            "functions": [
-                {
-                  "function": "minecraft:set_count",
-                  "count": {
-                    "min": 0,
-                    "max": 1
-                  }
-                }
-              ]
-          },
-          {
-            "type": "minecraft:item",
-            "name": "minecraft:beetroot_seeds",
-            "weight": 5,
-            "functions": [
-                {
-                  "function": "minecraft:set_count",
-                  "count": {
-                    "min": 0,
-                    "max": 1
-                  }
-                }
-              ]
-          },
-          {
-            "type": "minecraft:item",
-            "name": "minecraft:coal",
-            "weight": 5,
-            "functions": [
-              {
-                "function": "minecraft:set_count",
-                "count": {
-                  "min": 0,
-                  "max": 1
-                }
-              }
-            ],
-            "conditions": [
-              {
-                "condition": "minecraft:location_check",
-                "predicate": {
-                  "biome": "minecraft:stony_shore"
-                }
-              },
-              {
-                "condition": "minecraft:random_chance",
-                "chance": 0.5
               }
             ]
           },
@@ -130,7 +48,35 @@
           {
             "type": "minecraft:item",
             "name": "minecraft:bone_meal",
-            "weight": 2,
+            "weight": 5,
+            "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 0,
+                    "max": 1
+                  }
+                }
+              ]
+          },
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:glowstone_dust",
+            "weight": 1,
+            "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 0,
+                    "max": 1
+                  }
+                }
+              ]
+          },
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:bone",
+            "weight": 5,
             "functions": [
                 {
                   "function": "minecraft:set_count",
@@ -144,7 +90,7 @@
           {
             "type": "minecraft:item",
             "name": "minecraft:clay_ball",
-            "weight": 2,
+            "weight": 3,
             "functions": [
                 {
                   "function": "minecraft:set_count",
@@ -185,8 +131,8 @@
           },
           {
             "type": "minecraft:item",
-            "name": "minecraft:potato",
-            "weight": 1,
+            "name": "minecraft:red_mushroom",
+            "weight": 20,
             "functions": [
               {
                 "function": "minecraft:set_count",
@@ -199,22 +145,8 @@
           },
           {
             "type": "minecraft:item",
-            "name": "minecraft:beetroot",
-            "weight": 1,
-            "functions": [
-              {
-                "function": "minecraft:set_count",
-                "count": {
-                  "min": 0,
-                  "max": 1
-                }
-              }
-            ]
-          },
-          {
-            "type": "minecraft:item",
-            "name": "minecraft:coal",
-            "weight": 1,
+            "name": "minecraft:brown_mushroom",
+            "weight": 20,
             "functions": [
               {
                 "function": "minecraft:set_count",
@@ -228,7 +160,21 @@
           {
             "type": "minecraft:item",
             "name": "ulsmsd:heart_root",
-            "weight": 1,
+            "weight": 3,
+            "functions": [
+              {
+                "function": "minecraft:set_count",
+                "count": {
+                  "min": 0,
+                  "max": 1
+                }
+              }
+            ]
+          },
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:rotten_flesh",
+            "weight": 5,
             "functions": [
               {
                 "function": "minecraft:set_count",

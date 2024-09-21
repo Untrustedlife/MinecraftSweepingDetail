@@ -9,6 +9,8 @@
       "minecraft:coarse_dirt",
       "minecraft:rooted_dirt",
       "minecraft:snow",
-      "minecraft:snow_block"
+      "minecraft:snow_block",
+      "minecraft:podzol",
+      "minecraft:mycelium"
     ]
 }

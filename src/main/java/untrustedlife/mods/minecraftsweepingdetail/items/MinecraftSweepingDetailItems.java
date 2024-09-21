@@ -61,6 +61,11 @@ public class MinecraftSweepingDetailItems {
         new GarbageEffectData(MobEffects.MOVEMENT_SPEED, 400, 1, 1f)
     )));
 
+    public static final RegistryObject<Item> HEART_ROOT = ITEMS.register("heart_root",
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 4, 0.8f, false, List.of(
+        new GarbageEffectData(MobEffects.HEAL, 1, 0, 1f)
+    )));
+
     public static final RegistryObject<Item> FROST_BERRY = ITEMS.register("frost_berries",
     () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 3, 0.8f, false, List.of(
         new GarbageEffectData(MobEffects.SATURATION, 4, 0, 1f)
@@ -79,6 +84,11 @@ public class MinecraftSweepingDetailItems {
     public static final RegistryObject<Item> FROST_ROOT_ICECREAM = ITEMS.register("frost_root_icecream",
     () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 8, 1.2f, false, List.of(
         new GarbageEffectData(MobEffects.MOVEMENT_SPEED, 800, 1, 1f)
+    )));
+
+    public static final RegistryObject<Item> HEART_ROOT_ICECREAM = ITEMS.register("heart_root_icecream",
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 10, 1.2f, false, List.of(
+        new GarbageEffectData(MobEffects.HEAL, 1, 0, 1f)
     )));
 
     // Create a custom Creative Mode Tab
