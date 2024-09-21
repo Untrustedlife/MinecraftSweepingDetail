@@ -148,6 +148,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "ulsmsd:emerald_shard",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:clay_ball",
           "weight": 8,
           "functions": [
@@ -495,6 +509,20 @@
           "type": "minecraft:item",
           "name": "minecraft:iron_nugget",
           "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "ulsmsd:rock_root",
+          "weight": 4,
           "functions": [
             {
               "function": "minecraft:set_count",

@@ -117,8 +117,8 @@
           },
           {
             "type": "minecraft:item",
-            "name": "minecraft:emerald",
-            "weight": 1,
+            "name": "ulsmsd:emerald_shard",
+            "weight": 2,
             "functions": [
               {
                 "function": "minecraft:set_count",

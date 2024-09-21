@@ -155,6 +155,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/models/
   assets/ulsmsd/models/item/
   assets/ulsmsd/models/item/bundle_of_sticks.json
+  assets/ulsmsd/models/item/emerald_shard.json
   assets/ulsmsd/models/item/frost_berries.json
   assets/ulsmsd/models/item/frost_berry_icecream.json
   assets/ulsmsd/models/item/frost_root.json
@@ -163,6 +164,8 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/models/item/heart_root_icecream.json
   assets/ulsmsd/models/item/icicle.json
   assets/ulsmsd/models/item/plain_icecream.json
+  assets/ulsmsd/models/item/rock_root.json
+  assets/ulsmsd/models/item/rock_root_icecream.json
   assets/ulsmsd/models/item/straw_broom.json
   assets/ulsmsd/sounds.json
   assets/ulsmsd/sounds/
@@ -170,6 +173,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/textures/
   assets/ulsmsd/textures/item/
   assets/ulsmsd/textures/item/bundle_of_sticks.png
+  assets/ulsmsd/textures/item/emerald_shard.png
   assets/ulsmsd/textures/item/frost_berries.png
   assets/ulsmsd/textures/item/frost_berry_icecream.png
   assets/ulsmsd/textures/item/frost_root.png
@@ -178,6 +182,8 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/textures/item/heart_root_icecream.png
   assets/ulsmsd/textures/item/icicle.png
   assets/ulsmsd/textures/item/plain_icecream.png
+  assets/ulsmsd/textures/item/rock_root.png
+  assets/ulsmsd/textures/item/rock_root_icecream.png
   assets/ulsmsd/textures/item/straw_broom.png
   broom_icon.png
   data/
@@ -204,10 +210,13 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/loot_tables/blocks/snow_sweeping.json
   data/ulsmsd/recipes/
   data/ulsmsd/recipes/bundle_of_sticks_recipe.json
+  data/ulsmsd/recipes/emerald_from_shard.json
   data/ulsmsd/recipes/frost_berry_ice_cream_recipe.json
   data/ulsmsd/recipes/frost_root_ice_cream_recipe.json
   data/ulsmsd/recipes/heart_root_ice_cream_recipe.json
   data/ulsmsd/recipes/plain_ice_cream_recipe.json
+  data/ulsmsd/recipes/rock_root_ice_cream_recipe.json
+  data/ulsmsd/recipes/shard_from_emerald.json
   data/ulsmsd/recipes/straw_broom_recipe.json
   data/ulsmsd/tags/
   data/ulsmsd/tags/blocks/

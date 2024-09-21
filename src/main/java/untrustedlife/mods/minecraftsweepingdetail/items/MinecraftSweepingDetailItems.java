@@ -66,6 +66,11 @@ public class MinecraftSweepingDetailItems {
         new GarbageEffectData(MobEffects.HEAL, 1, 0, 1f)
     )));
 
+    public static final RegistryObject<Item> ROCK_ROOT = ITEMS.register("rock_root",
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 4, 0.8f, false, List.of(
+        new GarbageEffectData(MobEffects.DAMAGE_RESISTANCE, 400, 0, 1f)
+    )));
+
     public static final RegistryObject<Item> FROST_BERRY = ITEMS.register("frost_berries",
     () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 3, 0.8f, false, List.of(
         new GarbageEffectData(MobEffects.SATURATION, 4, 0, 1f)
@@ -79,6 +84,11 @@ public class MinecraftSweepingDetailItems {
     public static final RegistryObject<Item> FROST_BERRY_ICECREAM = ITEMS.register("frost_berry_icecream",
     () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 8, 1.2f, false, List.of(
         new GarbageEffectData(MobEffects.SATURATION, 6, 0, 1f)
+    )));
+
+    public static final RegistryObject<Item> ROCK_ROOT_ICECREAM = ITEMS.register("rock_root_icecream",
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 8, 1.4f, false, List.of(
+        new GarbageEffectData(MobEffects.DAMAGE_RESISTANCE, 800, 0, 1f)
     )));
 
     public static final RegistryObject<Item> FROST_ROOT_ICECREAM = ITEMS.register("frost_root_icecream",

@@ -346,6 +346,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "ulsmsd:emerald_shard",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "ulsmsd:frost_berries",
           "weight": 2,
           "functions": [

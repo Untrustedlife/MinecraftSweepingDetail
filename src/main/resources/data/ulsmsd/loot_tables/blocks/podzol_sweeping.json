@@ -165,7 +165,7 @@
           },
           {
             "type": "minecraft:item",
-            "name": "minecraft:emerald",
+            "name": "ulsmsd:emerald_shard",
             "weight": 1,
             "functions": [
               {
