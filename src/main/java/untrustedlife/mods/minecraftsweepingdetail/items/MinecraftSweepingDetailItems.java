@@ -47,7 +47,7 @@ public class MinecraftSweepingDetailItems {
     public static final RegistryObject<Item> EMERALD_SHARD = ITEMS.register("emerald_shard",
     () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB)));
 
-    public static final RegistryObject<Item> DIAMOND_SHARD = ITEMS.register("diamond_piece",
+    public static final RegistryObject<Item> DIAMOND_SHARD = ITEMS.register("diamond_bit",
     () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB)));
     
     public static final RegistryObject<Item> CLEANING_SHARD = ITEMS.register("cleaning_shard",
@@ -99,6 +99,33 @@ public class MinecraftSweepingDetailItems {
     public static final RegistryObject<Item> HEART_ROOT_ICECREAM = ITEMS.register("heart_root_icecream",
     () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 10, 1.2f, false, List.of(
         new GarbageEffectData(MobEffects.HEAL, 1, 0, 1f)
+    )));
+
+
+    //with sprinkles
+    public static final RegistryObject<Item> PLAIN_ICECREAM_SPRINKLES = ITEMS.register("plain_icecream_sprinkles",
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 11, 1.3f, false, List.of(
+        new GarbageEffectData(MobEffects.FIRE_RESISTANCE, 100, 0, 1f)
+    )));
+
+    public static final RegistryObject<Item> FROST_BERRY_ICECREAM_SPRINKLES = ITEMS.register("frost_berry_icecream_sprinkles",
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 11, 1.3f, false, List.of(
+        new GarbageEffectData(MobEffects.SATURATION, 8, 0, 1f)
+    )));
+
+    public static final RegistryObject<Item> ROCK_ROOT_ICECREAM_SPRINKLES = ITEMS.register("rock_root_icecream_sprinkles",
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 11, 1.5f, false, List.of(
+        new GarbageEffectData(MobEffects.DAMAGE_RESISTANCE, 1060, 0, 1f)
+    )));
+
+    public static final RegistryObject<Item> FROST_ROOT_ICECREAM_SPRINKLES = ITEMS.register("frost_root_icecream_sprinkles",
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 11, 1.3f, false, List.of(
+        new GarbageEffectData(MobEffects.MOVEMENT_SPEED, 1060, 1, 1f)
+    )));
+
+    public static final RegistryObject<Item> HEART_ROOT_ICECREAM_SPRINKLES = ITEMS.register("heart_root_icecream_sprinkles",
+    () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB), 13, 1.3f, false, List.of(
+        new GarbageEffectData(MobEffects.HEAL, 1, 1, 1f)
     )));
 
     // Create a custom Creative Mode Tab

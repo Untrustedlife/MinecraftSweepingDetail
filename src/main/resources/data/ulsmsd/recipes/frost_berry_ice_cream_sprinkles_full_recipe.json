@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ulsmsd:icicle"
+    },
+    {
+        "tag": "forge:milk"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "ulsmsd:frost_berries"
+    },
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "ulsmsd:diamond_bit"
+    },
+    {
+      "item": "ulsmsd:emerald_shard"
+    }
+  ],
+  "result": {
+    "item": "ulsmsd:frost_berry_icecream_sprinkles",
+    "count": 1
+  }
+}

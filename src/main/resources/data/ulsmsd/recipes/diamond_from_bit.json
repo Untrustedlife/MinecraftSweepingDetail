@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ulsmsd:diamond_bit"
+    },
+    {
+      "item": "ulsmsd:diamond_bit"
+    },
+    {
+      "item": "ulsmsd:diamond_bit"
+    },
+    {
+      "item": "ulsmsd:diamond_bit"
+    },
+    {
+      "item": "ulsmsd:diamond_bit"
+    },
+    {
+      "item": "ulsmsd:diamond_bit"
+    },
+    {
+      "item": "ulsmsd:diamond_bit"
+    }
+  ],
+  "result": {
+    "item": "minecraft:diamond",
+    "count": 1
+  }
+}
