@@ -274,6 +274,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/tags/items/broomtiers/broomtier2.json
   data/ulsmsd/tags/items/broomtiers/broomtier3.json
   data/ulsmsd/tags/items/broomtiers/readme.txt
+  data/ulsmsd/tags/items/shardtype.json
   data/ulsmsd/tags/items/strawtype.json
   pack.mcmeta
   untrustedlife/

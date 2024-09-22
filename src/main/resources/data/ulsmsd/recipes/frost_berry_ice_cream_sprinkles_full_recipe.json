@@ -20,7 +20,7 @@
       "item": "ulsmsd:diamond_bit"
     },
     {
-      "item": "ulsmsd:emerald_shard"
+      "tag": "ulsmsd:shardtype"
     }
   ],
   "result": {
