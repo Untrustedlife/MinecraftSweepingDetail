@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ulsmsd:cleaning_shard"
+    },
+    {
+      "item": "ulsmsd:cleaning_shard"
+    },
+    {
+      "item": "ulsmsd:cleaning_shard"
+    },
+    {
+      "item": "ulsmsd:cleaning_shard"
+    }
+  ],
+  "result": {
+    "item": "ulsmsd:cleaning_emerald",
+    "count": 1
+  }
+}

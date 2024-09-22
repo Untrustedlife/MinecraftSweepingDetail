@@ -155,6 +155,8 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/models/
   assets/ulsmsd/models/item/
   assets/ulsmsd/models/item/bundle_of_sticks.json
+  assets/ulsmsd/models/item/cleaning_emerald.json
+  assets/ulsmsd/models/item/cleaning_shard.json
   assets/ulsmsd/models/item/diamond_bit.json
   assets/ulsmsd/models/item/emerald_shard.json
   assets/ulsmsd/models/item/frost_berries.json
@@ -179,14 +181,16 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/textures/
   assets/ulsmsd/textures/item/
   assets/ulsmsd/textures/item/bundle_of_sticks.png
+  assets/ulsmsd/textures/item/cleaning_emerald.png
+  assets/ulsmsd/textures/item/cleaning_shard.png
   assets/ulsmsd/textures/item/diamond_bit.png
   assets/ulsmsd/textures/item/emerald_shard.png
   assets/ulsmsd/textures/item/frost_berries.png
   assets/ulsmsd/textures/item/frost_berry_icecream.png
   assets/ulsmsd/textures/item/frost_berry_icecream_sprinkles.png
   assets/ulsmsd/textures/item/frost_root.png
-  assets/ulsmsd/textures/item/frost_root_icecream _sprinkles.png
   assets/ulsmsd/textures/item/frost_root_icecream.png
+  assets/ulsmsd/textures/item/frost_root_icecream_sprinkles.png
   assets/ulsmsd/textures/item/heart_root.png
   assets/ulsmsd/textures/item/heart_root_icecream.png
   assets/ulsmsd/textures/item/heart_root_icecream_sprinkles.png
@@ -194,8 +198,8 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/textures/item/plain_icecream.png
   assets/ulsmsd/textures/item/plain_icecream_sprinkles.png
   assets/ulsmsd/textures/item/rock_root.png
-  assets/ulsmsd/textures/item/rock_root_icecream _sprinkles.png
   assets/ulsmsd/textures/item/rock_root_icecream.png
+  assets/ulsmsd/textures/item/rock_root_icecream_sprinkles.png
   assets/ulsmsd/textures/item/straw_broom.png
   broom_icon.png
   data/
@@ -223,6 +227,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/recipes/
   data/ulsmsd/recipes/bit_from_diamond.json
   data/ulsmsd/recipes/bundle_of_sticks_recipe.json
+  data/ulsmsd/recipes/cleaning_emerald_from_shard.json
   data/ulsmsd/recipes/diamond_from_bit.json
   data/ulsmsd/recipes/emerald_from_shard.json
   data/ulsmsd/recipes/frost_berry_ice_cream_recipe.json
@@ -235,6 +240,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/recipes/plain_ice_cream_sprinkles_full_recipe.json
   data/ulsmsd/recipes/rock_root_ice_cream_recipe.json
   data/ulsmsd/recipes/rock_root_ice_cream_sprinkles_full_recipe.json
+  data/ulsmsd/recipes/shard_from_cleaning_emerald.json
   data/ulsmsd/recipes/shard_from_emerald.json
   data/ulsmsd/recipes/straw_broom_recipe.json
   data/ulsmsd/tags/

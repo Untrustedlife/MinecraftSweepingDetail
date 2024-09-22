@@ -11,5 +11,11 @@
     "item.ulsmsd.frost_berry_icecream":"Frost Berry Icecream",
     "item.ulsmsd.frost_root_icecream":"Frost Root Icecream",
     "item.ulsmsd.heart_root_icecream":"Heart Root Icecream",
+    "item.ulsmsd.plain_icecream_sprinkles":"Plain Sprinkled Icecream",
+    "item.ulsmsd.frost_berry_icecream_sprinkles":"Frost Berry Sprinkled Icecream",
+    "item.ulsmsd.frost_root_icecream_sprinkles":"Frost Root Sprinkled Icecream",
+    "item.ulsmsd.heart_root_icecream_sprinkles":"Heart Root Sprinkled Icecream",
+    "item.ulsmsd.emerald_shard":"Emerald Shard",
+    "item.ulsmsd.diamond_bit":"Diamond Bit",
     "ulsmsd.sweep_sound": "*scritch*"
   }
