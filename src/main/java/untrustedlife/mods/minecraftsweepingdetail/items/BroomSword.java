@@ -31,9 +31,10 @@ public class BroomSword extends BroomItem {
      * @param effects                 A list of {@link GarbageEffectData} objects that define
      *                                the effects this sword will apply to enemies when attacking.
      */
-    public BroomSword(Properties properties, int burnTimeInTicks, int sweepUseTimeInTicks, int bonusDamage,List<GarbageEffectData> effects) {
+    public BroomSword(Properties properties, int burnTimeInTicks, int sweepUseTimeInTicks, int bonusDamage,List<GarbageEffectData> effects, boolean canSweep) {
         super(properties, burnTimeInTicks, sweepUseTimeInTicks, bonusDamage);
         this.myEffects=effects;
+        this.canSweep=canSweep;
     }
  
     /**
@@ -50,9 +51,10 @@ public class BroomSword extends BroomItem {
      * @param effects                 A list of {@link GarbageEffectData} that define the effects applied to enemies
      *                                when the broom sword hits a target.
      */
-    public BroomSword(Properties properties, int burnTimeInTicks, int sweepUseTimeInTicks, int bonusDamage, float attackSpeed, List<GarbageEffectData> effects) {
+    public BroomSword(Properties properties, int burnTimeInTicks, int sweepUseTimeInTicks, int bonusDamage, float attackSpeed, List<GarbageEffectData> effects, boolean canSweep) {
         super(properties, burnTimeInTicks, sweepUseTimeInTicks, bonusDamage, -2.4f - attackSpeed);
         this.myEffects = effects;
+        this.canSweep=canSweep;
     }
 
     /**

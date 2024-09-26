@@ -37,12 +37,12 @@ public class MinecraftSweepingDetailItems {
     public static final RegistryObject<Item> ICICLE = ITEMS.register("icicle",
     () -> new BroomSword(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(30),0,30,1,List.of(
         new GarbageEffectData(MobEffects.MOVEMENT_SLOWDOWN, 200, 0, 1f)
-    )));
+    ),true));
 
     public static final RegistryObject<Item> FROST_SWORD = ITEMS.register("frost_sword",
     () -> new BroomSword(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(200),0,30,3,List.of(
         new GarbageEffectData(MobEffects.MOVEMENT_SLOWDOWN, 400, 1, 1f)
-    )));
+    ),false));
 
     public static final RegistryObject<Item> EMERALD_SHARD = ITEMS.register("emerald_shard",
     () -> new BaseGarbageItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB)));

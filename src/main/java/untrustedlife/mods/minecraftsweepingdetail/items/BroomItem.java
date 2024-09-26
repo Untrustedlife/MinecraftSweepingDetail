@@ -68,7 +68,6 @@ import java.util.Optional;
  * @author Untrustedlife
  */
 public class BroomItem extends SwordItem  {
-
     //Constants
     protected static final long STREAK_EXPIRATION_TIME = 1050L; // little over 1 second
     private static final float INSTANT_BREAK_SPEED = 99999.0F;
@@ -82,7 +81,7 @@ public class BroomItem extends SwordItem  {
     //Arcade streak
     protected int oneHitCleanStreak = 0;
     protected long lastSweepTime = 0;
-
+    protected boolean canSweep=true;
 
 
     public BroomItem(Properties properties,int burnTimeInTicks, int sweepUseTimeInTicks, int bonusDamage) {
@@ -188,6 +187,9 @@ public class BroomItem extends SwordItem  {
 
     // Helper method to check sweepable block
     private boolean isSweepableBlock(BlockState state) {
+        if (!canSweep){
+            return false;
+        }
         return state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptiertags/sweepable")));
     }
 
