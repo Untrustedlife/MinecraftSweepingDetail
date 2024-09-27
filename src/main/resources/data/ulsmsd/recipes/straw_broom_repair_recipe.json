@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ulsmsd:straw_broom"
+    },
+    {
+      "tag": "ulsmsd:strawtype"
+    },
+    {
+      "item": "minecraft:string"
+    }
+  ],
+  "result": {
+    "item": "ulsmsd:straw_broom",
+    "count": 1
+  }
+}
