@@ -33,7 +33,7 @@ public class TrashBaseBlock extends Block {
      */
     public TrashBaseBlock() {
         super(Properties.of(Material.DIRT)
-                .strength(0.1F) // Weak block, easily breakable
+                .strength(50.0F, 1.0F)  // Tough to break manually, but easily destroyed by explosions to encourage using a broom
                 .sound(SoundType.GRASS)); // Grass sound type
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
