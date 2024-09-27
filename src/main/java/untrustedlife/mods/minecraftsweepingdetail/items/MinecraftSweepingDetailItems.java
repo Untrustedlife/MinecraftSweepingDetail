@@ -40,7 +40,7 @@ public class MinecraftSweepingDetailItems {
     ),true));
 
     public static final RegistryObject<Item> FROST_SWORD = ITEMS.register("frost_sword",
-    () -> new BroomSword(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(200),0,30,3,List.of(
+    () -> new BroomSword(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(150),0,30,2,List.of(
         new GarbageEffectData(MobEffects.MOVEMENT_SLOWDOWN, 400, 1, 1f)
     ),false));
 

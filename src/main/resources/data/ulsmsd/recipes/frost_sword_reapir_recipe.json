@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "W",
+      "S"
+    ],
+    "key": {
+      "S": {
+        "item": "ulsmsd:frost_sword"
+      },
+      "W": {
+        "item": "ulsmsd:icicle"
+      }
+    },
+    "result": {
+      "item": "ulsmsd:frost_sword",
+      "count": 1
+    }
+  }

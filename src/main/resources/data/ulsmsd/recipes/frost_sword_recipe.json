@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "W",
+      "W",
+      "S"
+    ],
+    "key": {
+      "S": {
+        "item": "ulsmsd:bundle_of_sticks"
+      },
+      "W": {
+        "item": "ulsmsd:icicle"
+      }
+    },
+    "result": {
+      "item": "ulsmsd:frost_sword",
+      "count": 1
+    }
+  }

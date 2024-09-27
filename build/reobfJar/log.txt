@@ -165,6 +165,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/models/item/frost_root.json
   assets/ulsmsd/models/item/frost_root_icecream.json
   assets/ulsmsd/models/item/frost_root_icecream_sprinkles.json
+  assets/ulsmsd/models/item/frost_sword.json
   assets/ulsmsd/models/item/heart_root.json
   assets/ulsmsd/models/item/heart_root_icecream.json
   assets/ulsmsd/models/item/heart_root_icecream_sprinkles.json
@@ -191,6 +192,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/textures/item/frost_root.png
   assets/ulsmsd/textures/item/frost_root_icecream.png
   assets/ulsmsd/textures/item/frost_root_icecream_sprinkles.png
+  assets/ulsmsd/textures/item/frost_sword.png
   assets/ulsmsd/textures/item/heart_root.png
   assets/ulsmsd/textures/item/heart_root_icecream.png
   assets/ulsmsd/textures/item/heart_root_icecream_sprinkles.png
@@ -225,6 +227,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/loot_tables/blocks/sand_sweeping.json
   data/ulsmsd/loot_tables/blocks/snow_sweeping.json
   data/ulsmsd/recipes/
+  data/ulsmsd/recipes/arrow_of_slowness_icicle.json
   data/ulsmsd/recipes/bit_from_diamond.json
   data/ulsmsd/recipes/bundle_of_sticks_recipe.json
   data/ulsmsd/recipes/cleaning_emerald_from_shard.json
@@ -234,6 +237,8 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/recipes/frost_berry_ice_cream_sprinkles_full_recipe.json
   data/ulsmsd/recipes/frost_root_ice_cream_recipe.json
   data/ulsmsd/recipes/frost_root_ice_cream_sprinkles_full_recipe.json
+  data/ulsmsd/recipes/frost_sword_reapir_recipe.json
+  data/ulsmsd/recipes/frost_sword_recipe.json
   data/ulsmsd/recipes/heart_root_ice_cream_recipe.json
   data/ulsmsd/recipes/heart_root_ice_cream_sprinkles_full_recipe.json
   data/ulsmsd/recipes/plain_ice_cream_recipe.json
