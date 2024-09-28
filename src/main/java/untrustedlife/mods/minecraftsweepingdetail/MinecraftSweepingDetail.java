@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import untrustedlife.mods.minecraftsweepingdetail.blocks.MinecraftSweepingDetailBlocks;
 import untrustedlife.mods.minecraftsweepingdetail.items.MinecraftSweepingDetailItems;
 import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
 
@@ -25,9 +26,13 @@ public class MinecraftSweepingDetail {
         LOGGER.info("MinecraftSweepingDetail loaded.");
          IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
          bus.addListener(this::onSetupEvent);
-        // Register items and other things with the mod event bus
+         
         MinecraftSweepingDetailItems.register(bus);
         LOGGER.info("Items loaded.");
+
+        MinecraftSweepingDetailBlocks.register(bus);
+        LOGGER.info("Blocks loaded.");
+
         SweepingDetailSoundRegistry.initialise(bus);
         LOGGER.info("Sounds loaded.");
     }

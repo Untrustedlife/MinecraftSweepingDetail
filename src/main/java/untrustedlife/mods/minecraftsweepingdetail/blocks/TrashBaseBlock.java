@@ -7,14 +7,18 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import untrustedlife.mods.minecraftsweepingdetail.UntrustedDiceRolling;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 
 /**
  * A block representing trash, with custom rotation and mirroring logic. 
@@ -26,6 +30,8 @@ import net.minecraft.core.Direction;
 public class TrashBaseBlock extends Block {
     // Property that stores the facing direction of the block
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    // Custom variant property (can be 1 or 2)
+    public static final IntegerProperty VARIANT = IntegerProperty.create("variant", 1, 2);
 
     /**
      * Constructor for TrashBaseBlock. 
@@ -34,8 +40,11 @@ public class TrashBaseBlock extends Block {
     public TrashBaseBlock() {
         super(Properties.of(Material.DIRT)
                 .strength(50.0F, 1.0F)  // Tough to break manually, but easily destroyed by explosions to encourage using a broom
-                .sound(SoundType.GRASS)); // Grass sound type
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+                .sound(SoundType.GRASS)
+                .noOcclusion()); // Grass sound type
+        this.registerDefaultState(this.stateDefinition.any()
+            .setValue(FACING, Direction.NORTH)
+            .setValue(VARIANT, 2)); // Default variant 1
     }
 
     /**
@@ -45,7 +54,7 @@ public class TrashBaseBlock extends Block {
      */
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING); // Add the FACING property to allow block rotation
+        builder.add(FACING, VARIANT); // Add FACING and VARIANT properties
     }
 
     /**
@@ -57,7 +66,13 @@ public class TrashBaseBlock extends Block {
      */
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        int randomVariant = 2;
+        if (UntrustedDiceRolling.rollDice(100) > 60){
+            randomVariant=1;
+        }
+        return this.defaultBlockState()
+            .setValue(FACING, context.getHorizontalDirection().getOpposite())
+            .setValue(VARIANT, randomVariant);
     }
 
     /**
@@ -97,6 +112,13 @@ public class TrashBaseBlock extends Block {
      */
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        return Block.box(0, 0, 0, 16, 1, 16);  // 1 pixel high block shape
+        int height = state.getValue(VARIANT) == 1 ? 3 : 2;  // Adjust shape height based on variant
+        return Block.box(0, 0, 0, 16, height, 16);  // 1 pixel high block shape
     }
+
+    @Override
+    public boolean useShapeForLightOcclusion(BlockState state) {
+        return true;  // Uses the shape for rendering light correctly
+    }
+
 }
