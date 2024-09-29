@@ -26,7 +26,7 @@ public class MinecraftSweepingDetailPlacedFeatures {
             () ->  new PlacedFeature(
                 Holder.direct(MinecraftSweepingDetailConfiguredFeatures.TRASH_DUMP_1.get()), // Link to the ConfiguredFeature
                 List.of(
-                    RarityFilter.onAverageOnceEvery(2),
+                    RarityFilter.onAverageOnceEvery(50),
                     HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), // Place on surface
                     BiomeFilter.biome(), // Spawn in all biomes
                     BlockPredicateFilter.forPredicate(BlockPredicate.solid(new Vec3i(0,-1,0)))
