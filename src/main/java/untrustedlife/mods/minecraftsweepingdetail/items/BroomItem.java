@@ -236,7 +236,7 @@ public class BroomItem extends SwordItem  {
             double xSpeed = (level.random.nextDouble()- 0.5) * 0.5;
             double ySpeed = (level.random.nextDouble()- 0.5) * 0.5;
             double zSpeed = (level.random.nextDouble()- 0.5) * 0.5;
-            level.addParticle(new DustParticleOptions(new Vector3f(0, 0.5F, 0.1F), 1.0F), xPos, yPos, zPos, xSpeed, ySpeed, zSpeed);
+            level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0, 0.5F, 0.1F), 1.0F), xPos, yPos, zPos, xSpeed, ySpeed, zSpeed);
         }
     }
     

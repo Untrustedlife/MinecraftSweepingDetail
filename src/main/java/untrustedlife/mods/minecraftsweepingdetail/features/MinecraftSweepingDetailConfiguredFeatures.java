@@ -94,6 +94,8 @@ public class MinecraftSweepingDetailConfiguredFeatures {
                 BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, -1, 0), MinecraftSweepingDetailBlocks.TRASH_BLOCK.get())),
                 BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), MinecraftSweepingDetailBlocks.TRASH_BLOCK_TIER2.get())),
                 BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, -1, 0), MinecraftSweepingDetailBlocks.TRASH_BLOCK_TIER2.get())),
+                BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), MinecraftSweepingDetailBlocks.TRASH_BLOCK_TIER3.get())),
+                BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, -1, 0), MinecraftSweepingDetailBlocks.TRASH_BLOCK_TIER3.get())),
                 BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 0, 0), Blocks.WATER))
                 )))));
 
@@ -111,6 +113,8 @@ public class MinecraftSweepingDetailConfiguredFeatures {
                 BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, -1, 0), MinecraftSweepingDetailBlocks.TRASH_BLOCK.get())),
                 BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), MinecraftSweepingDetailBlocks.TRASH_BLOCK_TIER2.get())),
                 BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, -1, 0), MinecraftSweepingDetailBlocks.TRASH_BLOCK_TIER2.get())),
+                BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), MinecraftSweepingDetailBlocks.TRASH_BLOCK_TIER3.get())),
+                BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, -1, 0), MinecraftSweepingDetailBlocks.TRASH_BLOCK_TIER3.get())),
                 BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 0, 0), Blocks.WATER))
                 )))));
             // Method to register all features with the event bus
