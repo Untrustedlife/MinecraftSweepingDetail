@@ -1,12 +1,17 @@
 package untrustedlife.mods.minecraftsweepingdetail;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
+
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import untrustedlife.mods.minecraftsweepingdetail.blocks.MinecraftSweepingDetailBlocks;
+import untrustedlife.mods.minecraftsweepingdetail.features.MinecraftSweepingDetailConfiguredFeatures;
+import untrustedlife.mods.minecraftsweepingdetail.features.MinecraftSweepingDetailPlacedFeatures;
 import untrustedlife.mods.minecraftsweepingdetail.items.MinecraftSweepingDetailItems;
 import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
 
@@ -35,11 +40,18 @@ public class MinecraftSweepingDetail {
 
         SweepingDetailSoundRegistry.initialise(bus);
         LOGGER.info("Sounds loaded.");
+
+        MinecraftSweepingDetailConfiguredFeatures.register(bus);
+        LOGGER.info("Configured Feature loaded.");
+
+        MinecraftSweepingDetailPlacedFeatures.register(bus);
+        LOGGER.info("Placed Feature loaded.");
+
+
     }
 
     public void onSetupEvent(final FMLCommonSetupEvent event) {
         LOGGER.info("Common setup event triggered");
     }
-
 
 }

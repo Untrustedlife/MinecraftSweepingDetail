@@ -1,9 +1,11 @@
 {
     "cSpell.words": [
         "COOLDOWN",
+        "minecraftsweepingdetail",
         "MODID",
         "Sweepable",
-        "ulsmsd"
+        "ulsmsd",
+        "untrustedlife"
     ],
     "java.compile.nullAnalysis.mode": "disabled"
 }

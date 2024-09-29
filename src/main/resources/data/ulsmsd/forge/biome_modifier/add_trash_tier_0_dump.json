@@ -1,0 +1,8 @@
+{
+    "type": "forge:add_features",
+    "biomes": "#minecraft:is_overworld", 
+    "features": [
+      "ulsmsd:add_trash_tier_0_dump"
+    ],
+    "step": "vegetal_decoration"
+  }
