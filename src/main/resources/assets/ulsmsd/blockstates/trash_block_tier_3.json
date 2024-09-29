@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "variant=1,facing=north": { "model": "ulsmsd:block/trash_block_tier_3_v1", "y": 0 },
+      "variant=1,facing=south": { "model": "ulsmsd:block/trash_block_tier_3_v1", "y": 180 },
+      "variant=1,facing=west": { "model": "ulsmsd:block/trash_block_tier_3_v1", "y": 270 },
+      "variant=1,facing=east": { "model": "ulsmsd:block/trash_block_tier_3_v1", "y": 90 },
+  
+      "variant=2,facing=north": { "model": "ulsmsd:block/trash_block_tier_3_v2", "y": 0 },
+      "variant=2,facing=south": { "model": "ulsmsd:block/trash_block_tier_3_v2", "y": 180 },
+      "variant=2,facing=west": { "model": "ulsmsd:block/trash_block_tier_3_v2", "y": 270 },
+      "variant=2,facing=east": { "model": "ulsmsd:block/trash_block_tier_3_v2", "y": 90 }
+    }
+  }

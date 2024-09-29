@@ -251,7 +251,9 @@ public class BroomItem extends SwordItem  {
             "sweep_snow", new ResourceLocation("ulsmsd:blocks/snow_sweeping"),
             "sweep_podzol", new ResourceLocation("ulsmsd:blocks/podzol_sweeping"),
             "sweep_mycelium", new ResourceLocation("ulsmsd:blocks/mycelium_sweeping"),
-            "sweep_tier1_trash", new ResourceLocation("ulsmsd:blocks/tier1_trash_sweeping")
+            "sweep_tier1_trash", new ResourceLocation("ulsmsd:blocks/tier1_trash_sweeping"),
+            "sweep_tier2_trash", new ResourceLocation("ulsmsd:blocks/tier2_trash_sweeping"),
+            "sweep_tier3_trash", new ResourceLocation("ulsmsd:blocks/tier3_trash_sweeping")
             // Add more sweep types and their corresponding loot tables here
         );
         
@@ -264,7 +266,7 @@ public class BroomItem extends SwordItem  {
 
     // Helper method to get the sweep type from block state using tags
     protected Optional<String> getSweepTypeFromState(BlockState state) {
-        for (String sweepType : Arrays.asList("sweep_string", "sweep_dirt","sweep_sand","sweep_snow","sweep_podzol","sweep_mycelium","sweep_tier1_trash")) {
+        for (String sweepType : Arrays.asList("sweep_string", "sweep_dirt","sweep_sand","sweep_snow","sweep_podzol","sweep_mycelium","sweep_tier1_trash","sweep_tier2_trash","sweep_tier3_trash")) {
             if (state.is(BlockTags.create(new ResourceLocation("ulsmsd", "sweeptypetags/" + sweepType)))) {
                 return Optional.of(sweepType);
             }

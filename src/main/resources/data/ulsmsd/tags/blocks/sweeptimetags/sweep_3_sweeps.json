@@ -3,6 +3,8 @@
     "values": [
       "minecraft:snow_block",
       "minecraft:podzol",
-      "ulsmsd:trash_block_tier_1"
+      "ulsmsd:trash_block_tier_1",
+      "ulsmsd:trash_block_tier_2",
+      "ulsmsd:trash_block_tier_3"
     ]
   }

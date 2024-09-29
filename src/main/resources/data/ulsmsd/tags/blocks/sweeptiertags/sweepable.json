@@ -13,6 +13,8 @@
       "minecraft:podzol",
       "minecraft:mycelium",
       "minecraft:powder_snow",
-      "ulsmsd:trash_block_tier_1"
+      "ulsmsd:trash_block_tier_1",
+      "ulsmsd:trash_block_tier_2",
+      "ulsmsd:trash_block_tier_3"
     ]
 }

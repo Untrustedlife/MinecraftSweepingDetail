@@ -26,12 +26,23 @@ public class MinecraftSweepingDetailPlacedFeatures {
             () ->  new PlacedFeature(
                 Holder.direct(MinecraftSweepingDetailConfiguredFeatures.TRASH_DUMP_1.get()), // Link to the ConfiguredFeature
                 List.of(
-                    RarityFilter.onAverageOnceEvery(50),
+                    RarityFilter.onAverageOnceEvery(100),
                     HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), // Place on surface
                     BiomeFilter.biome(), // Spawn in all biomes
                     BlockPredicateFilter.forPredicate(BlockPredicate.solid(new Vec3i(0,-1,0)))
                 )
             ));
+
+        public static final RegistryObject<PlacedFeature> LARGE_TRASH_PATCH_PLACED = PLACED_FEATURES.register("trash_large_dump",
+        () ->  new PlacedFeature(
+            Holder.direct(MinecraftSweepingDetailConfiguredFeatures.TRASH_DUMP_1.get()), // Link to the ConfiguredFeature
+            List.of(
+                RarityFilter.onAverageOnceEvery(200),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), // Place on surface
+                BiomeFilter.biome(), // Spawn in all biomes
+                BlockPredicateFilter.forPredicate(BlockPredicate.solid(new Vec3i(0,-1,0)))
+            )
+        ));
 
 
     public static void register(IEventBus eventBus){

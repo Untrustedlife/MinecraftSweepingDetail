@@ -2,6 +2,7 @@
     "replace": false,
     "values": [
     "minecraft:rooted_dirt",
-    "minecraft:mycelium"
+    "minecraft:mycelium",
+    "ulsmsd:trash_block_tier_2"
     ]
 }

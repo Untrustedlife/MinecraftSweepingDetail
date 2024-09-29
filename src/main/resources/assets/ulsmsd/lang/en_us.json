@@ -23,5 +23,7 @@
     "item.ulsmsd.cleaning_emerald":"Cleaning Emerald",
     "ulsmsd.sweep_sound": "*scritch*",
     "item.ulsmsd.frost_sword":"Frost Sword",
-    "block.ulsmsd.trash_block_tier_1":"Scattered Litter"
+    "block.ulsmsd.trash_block_tier_1":"Loose Litter",
+    "block.ulsmsd.trash_block_tier_2":"Grouped Garbage",
+    "block.ulsmsd.trash_block_tier_3":"Compacted Crud"
   }
