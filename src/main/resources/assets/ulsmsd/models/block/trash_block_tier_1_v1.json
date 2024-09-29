@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"all": "ulsmsd:block/trash_block_tier_1"
+		"all": "ulsmsd:block/trash_block_tier_1",
+		"particle": "ulsmsd:block/trash_block_tier_1"
 	},
 	"elements": [
 		{

@@ -17,7 +17,7 @@ public class MinecraftSweepingDetailBlocks {
 
     // Register your custom block (example of a trash block)
     public static final RegistryObject<Block> TRASH_BLOCK = BLOCKS.register("trash_block_tier_1", 
-        () -> new TrashBaseBlock());
+        () -> new TrashBaseBlock("trash_block_tier_1"));
 
     // Register the block's item form so it appears in the creative tab
     public static final RegistryObject<Item> TRASH_BLOCK_ITEM = MinecraftSweepingDetailItems.ITEMS.register("trash_block_tier_1", 

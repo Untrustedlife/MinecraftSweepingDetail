@@ -38,4 +38,21 @@ public class UntrustedDiceRolling {
     public static double generateNormalizedValueBetween(double max){
         return (Math.random()*(max*2))-max;
     }
+
+
+    /**
+     * This method chooses a random element from a generic array.
+     * 
+     * @param <T> the type of elements in the array
+     * @param array the array to choose from
+     * @return a random element from the array
+     * @throws IllegalArgumentException if the array is null or empty
+     */
+    public static <T> T choose(T[] array) {
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("Array must not be null or empty");
+        }
+        int randomIndex = (int)(Math.random() * array.length);  // Correct random index calculation
+        return array[randomIndex];
+    }
 }

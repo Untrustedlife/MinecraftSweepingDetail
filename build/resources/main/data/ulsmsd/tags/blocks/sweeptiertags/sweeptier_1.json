@@ -10,6 +10,7 @@
       "minecraft:snow",
       "minecraft:snow_block",
       "minecraft:podzol",
-      "minecraft:powder_snow"
+      "minecraft:powder_snow",
+      "ulsmsd:trash_block_tier_1"
     ]
 }

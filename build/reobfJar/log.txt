@@ -140,11 +140,14 @@ Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/it
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomItem/getDestroySpeed(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/block/state/BlockState;)F from net/minecraft/world/item/SwordItem/getDestroySpeed(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/block/state/BlockState;)F: getDestroySpeed -> m_8102_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomItem/getUseDuration(Lnet/minecraft/world/item/ItemStack;)I from net/minecraft/world/item/Item/getUseDuration(Lnet/minecraft/world/item/ItemStack;)I: getUseDuration -> m_8105_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;: useOn -> m_6225_
+Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomSword/hurtEnemy(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z from net/minecraft/world/item/SwordItem/hurtEnemy(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z: hurtEnemy -> m_7579_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/blocks/TrashBaseBlock/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/state/BlockBehaviour/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState;: rotate -> m_6843_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/blocks/TrashBaseBlock/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/Block/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;: getStateForPlacement -> m_5573_
-Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/items/BroomSword/hurtEnemy(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z from net/minecraft/world/item/SwordItem/hurtEnemy(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z: hurtEnemy -> m_7579_
+Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/blocks/TrashBaseBlock/getCollisionShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getCollisionShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getCollisionShape -> m_5939_
+Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/blocks/TrashBaseBlock/attack(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;)V from net/minecraft/world/level/block/state/BlockBehaviour/attack(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;)V: attack -> m_6256_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/blocks/TrashBaseBlock/mirror(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Mirror;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/state/BlockBehaviour/mirror(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Mirror;)Lnet/minecraft/world/level/block/state/BlockState;: mirror -> m_6943_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/blocks/TrashBaseBlock/useShapeForLightOcclusion(Lnet/minecraft/world/level/block/state/BlockState;)Z from net/minecraft/world/level/block/state/BlockBehaviour/useShapeForLightOcclusion(Lnet/minecraft/world/level/block/state/BlockState;)Z: useShapeForLightOcclusion -> m_7923_
+Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/blocks/TrashBaseBlock/isCollisionShapeFullBlock(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z from net/minecraft/world/level/block/state/BlockBehaviour/isCollisionShapeFullBlock(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z: isCollisionShapeFullBlock -> m_180643_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/blocks/TrashBaseBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
 Conflicting propagated mapping for untrustedlife/mods/minecraftsweepingdetail/blocks/TrashBaseBlock/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V from net/minecraft/world/level/block/Block/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V: createBlockStateDefinition -> m_7926_
 Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
@@ -194,6 +197,8 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/textures/
   assets/ulsmsd/textures/block/
   assets/ulsmsd/textures/block/trash_block_tier_1.png
+  assets/ulsmsd/textures/block/trash_block_tier_2.png
+  assets/ulsmsd/textures/block/trash_block_tier_3.png
   assets/ulsmsd/textures/item/
   assets/ulsmsd/textures/item/bundle_of_sticks.png
   assets/ulsmsd/textures/item/cleaning_emerald.png
@@ -240,6 +245,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/loot_tables/blocks/podzol_sweeping.json
   data/ulsmsd/loot_tables/blocks/sand_sweeping.json
   data/ulsmsd/loot_tables/blocks/snow_sweeping.json
+  data/ulsmsd/loot_tables/blocks/tier1_trash_sweeping.json
   data/ulsmsd/recipes/
   data/ulsmsd/recipes/arrow_of_slowness_icicle.json
   data/ulsmsd/recipes/bit_from_diamond.json
@@ -279,7 +285,6 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/tags/blocks/sweeptypetags/
   data/ulsmsd/tags/blocks/sweeptypetags/readme.txt
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_blood.json
-  data/ulsmsd/tags/blocks/sweeptypetags/sweep_common_trash.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_dirt.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_dust.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_mycelium.json
@@ -288,6 +293,9 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_slime.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_snow.json
   data/ulsmsd/tags/blocks/sweeptypetags/sweep_string.json
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_tier1_trash.json
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_tier2_trash.json
+  data/ulsmsd/tags/blocks/sweeptypetags/sweep_tier3_trash.json
   data/ulsmsd/tags/items/
   data/ulsmsd/tags/items/broomtiers/
   data/ulsmsd/tags/items/broomtiers/broomtier1.json
