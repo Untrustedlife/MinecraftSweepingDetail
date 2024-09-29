@@ -389,11 +389,12 @@ public class BroomItem extends SwordItem  {
     protected int calculateSweepsRequired(int blockTier, int broomTier, int baseSweeps) {
         if (broomTier < blockTier) {
             int tierDifference = blockTier - broomTier;
-            return baseSweeps * (int) Math.pow(3, tierDifference);  // Multiply by 3 for each tier difference
+            // return baseSweeps * (int) Math.pow(3, tierDifference);  // Multiply by 3 for each tier difference (2 tier difference ended up being 27)
+            return baseSweeps * (tierDifference*3);  // Multiply by 3 for each tier difference
         } // If the broom's tier is higher, subtract the block's tier from the broom's tier and reduce the base sweep count by that amount (e.g., a tier 3 broom used on a tier 1 block reduces the required sweeps by 2, turning a 3-sweep block into a 1-sweep block)
         else if (broomTier > blockTier){
             int tierDifference = broomTier-blockTier;
-            return baseSweeps-tierDifference;
+            return Math.max(1, baseSweeps - tierDifference);
         }
         return baseSweeps;
     }
