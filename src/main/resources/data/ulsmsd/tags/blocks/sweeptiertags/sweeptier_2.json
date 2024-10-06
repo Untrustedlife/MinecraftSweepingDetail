@@ -3,6 +3,7 @@
     "values": [
     "minecraft:rooted_dirt",
     "minecraft:mycelium",
-    "ulsmsd:trash_block_tier_2"
+    "ulsmsd:trash_block_tier_2",
+    "minecraft:slime_block"
     ]
 }
