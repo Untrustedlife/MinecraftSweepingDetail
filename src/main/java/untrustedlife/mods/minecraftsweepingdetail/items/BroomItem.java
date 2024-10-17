@@ -322,12 +322,31 @@ public class BroomItem extends SwordItem  {
 
     // Map stores the block position and a pair of sweeping progress and block state.
     protected final Map<BlockPos, Pair<Integer, BlockState>> sweepingProgressMap = new HashMap<>();
+    protected BlockPos lastSweptBlockPos = null;  // Tracks the last block position that was swept
+    protected boolean wasUsingDustpan = false;   // Tracks whether the dustpan was used during sweeping
 
+    
     // Helper method to process the sweeping and run the loot table
     protected void processSweeping(Level level, Player player, UseOnContext context, ResourceLocation lootTableLocation) {
         //This is all very messy and needs to be seperated out into other functions
         BlockPos pos = context.getClickedPos();
         BlockState currentState = level.getBlockState(pos);
+
+        
+        /*DUST PAN LOGIC***********************************************************************************************/
+        // Check if the dustpan was equipped during sweeping and is now unequipped or changed mid-sweep
+        ItemStack offHandItem = player.getOffhandItem();
+        if ((sweepingProgressMap.containsKey(lastSweptBlockPos) && wasUsingDustpan && (!(offHandItem.getItem() instanceof DustPanItem))) ||
+         (lastSweptBlockPos != null && !lastSweptBlockPos.equals(pos))) {
+            Pair<Integer, BlockState> progressData = sweepingProgressMap.get(lastSweptBlockPos);
+            player.displayClientMessage(Component.literal("§4You dumped out the "+ new ItemStack(progressData.getSecond().getBlock().asItem()).getHoverName()+", resetting your progress!"), true);
+            sweepingProgressMap.clear();  // Clear all progress if sweeping is interrupted
+            lastSweptBlockPos = null;  // Reset the last swept block position
+            wasUsingDustpan = false;  // Reset the dustpan usage tracker
+            return;  // Exit early
+        }
+        /**************************************************************************************************************/
+
         // Retrieve broom and block tiers
         int broomTier = getTierFromTool(context.getItemInHand());
         int blockTier = getTierFromBlock(currentState);
@@ -336,8 +355,17 @@ public class BroomItem extends SwordItem  {
         int baseSweeps = getSweepAmountFromBlock(currentState); 
         int requiredSweeps = calculateSweepsRequired(blockTier, broomTier, baseSweeps);
 
+        /*DUST PAN LOGIC***********************************************************************************************/
+        // Modify sweeps if the dustpan is held in the off-hand
+        if (offHandItem.getItem() instanceof DustPanItem) {
+            requiredSweeps = ((DustPanItem) offHandItem.getItem()).getModifiedSweeps(requiredSweeps, player);
+            wasUsingDustpan = true;  // Mark that the dustpan was being used
+        }
+        /**************************************************************************************************************/
+
         // Check if the block is in the map and reset if the block type has changed
         Pair<Integer, BlockState> progressData = sweepingProgressMap.get(pos);
+
         if (progressData != null && !progressData.getSecond().equals(currentState)) {
             // Block type has changed, reset progress
             sweepingProgressMap.remove(pos);
@@ -354,7 +382,7 @@ public class BroomItem extends SwordItem  {
         if (currentTime-lastSweepTime > STREAK_EXPIRATION_TIME){
             oneHitCleanStreak=0;
         }
-        lastSweepTime=System.currentTimeMillis();
+        lastSweepTime=currentTime;
 
         //Text to tell player whats left for their sweeping
         tellPlayerSweepInfo(currentSweeps,requiredSweeps,player);
@@ -364,6 +392,10 @@ public class BroomItem extends SwordItem  {
 
          // If all sweeps are complete, remove the block and give the loot
         if (currentSweeps >= requiredSweeps) {
+            //THis should be fine, because if the player rmeoves it their progress will get totally reset anyway. 
+            if (offHandItem.getItem() instanceof DustPanItem) {
+                offHandItem.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(InteractionHand.OFF_HAND));
+            }
             // Remove the block
             level.setBlock(context.getClickedPos(), Blocks.AIR.defaultBlockState(), 1 | 2);
             // Fetch and run the loot table
