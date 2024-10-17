@@ -178,6 +178,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/models/item/cleaning_emerald.json
   assets/ulsmsd/models/item/cleaning_shard.json
   assets/ulsmsd/models/item/diamond_bit.json
+  assets/ulsmsd/models/item/dust_pan.json
   assets/ulsmsd/models/item/emerald_shard.json
   assets/ulsmsd/models/item/frost_berries.json
   assets/ulsmsd/models/item/frost_berry_icecream.json
@@ -212,6 +213,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   assets/ulsmsd/textures/item/cleaning_emerald.png
   assets/ulsmsd/textures/item/cleaning_shard.png
   assets/ulsmsd/textures/item/diamond_bit.png
+  assets/ulsmsd/textures/item/dust_pan.png
   assets/ulsmsd/textures/item/emerald_shard.png
   assets/ulsmsd/textures/item/frost_berries.png
   assets/ulsmsd/textures/item/frost_berry_icecream.png
@@ -256,6 +258,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   data/ulsmsd/loot_tables/blocks/mycelium_sweeping.json
   data/ulsmsd/loot_tables/blocks/podzol_sweeping.json
   data/ulsmsd/loot_tables/blocks/sand_sweeping.json
+  data/ulsmsd/loot_tables/blocks/slime_sweeping.json
   data/ulsmsd/loot_tables/blocks/snow_sweeping.json
   data/ulsmsd/loot_tables/blocks/tier1_trash_sweeping.json
   data/ulsmsd/loot_tables/blocks/tier2_trash_sweeping.json
@@ -337,6 +340,7 @@ Writing Output: C:\Users\untru\OneDrive\Desktop\GameFactory\MinecraftSweepingDet
   untrustedlife/mods/minecraftsweepingdetail/items/BroomItem$1.class
   untrustedlife/mods/minecraftsweepingdetail/items/BroomItem.class
   untrustedlife/mods/minecraftsweepingdetail/items/BroomSword.class
+  untrustedlife/mods/minecraftsweepingdetail/items/DustPanItem.class
   untrustedlife/mods/minecraftsweepingdetail/items/GarbageEffectData.class
   untrustedlife/mods/minecraftsweepingdetail/items/MinecraftSweepingDetailItems$1.class
   untrustedlife/mods/minecraftsweepingdetail/items/MinecraftSweepingDetailItems.class

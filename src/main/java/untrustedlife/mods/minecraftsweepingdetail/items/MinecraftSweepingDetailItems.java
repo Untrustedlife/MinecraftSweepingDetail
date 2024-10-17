@@ -30,6 +30,9 @@ public class MinecraftSweepingDetailItems {
     public static final RegistryObject<Item> BROOM = ITEMS.register("straw_broom",
         () -> new BroomItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(100),200,20,0));
     
+    public static final RegistryObject<Item> DUST_PAN = ITEMS.register("dust_pan",
+        () -> new DustPanItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(32),200,0));
+
     public static final RegistryObject<Item> BUNDLESTICKS = ITEMS.register("bundle_of_sticks",
         () -> new BroomItem(new Item.Properties().tab(MinecraftSweepingDetailItems.SWEEPING_TAB).durability(15),350,30,-2));
     

@@ -10,7 +10,7 @@ public class DustPanItem extends SwordItem {
     //Alterables
     protected final int burnTicks;
 
-    public DustPanItem(Properties properties,int burnTimeInTicks, int sweepUseTimeInTicks, int bonusDamage) {
+    public DustPanItem(Properties properties,int burnTimeInTicks, int bonusDamage) {
          super(Tiers.WOOD, bonusDamage, -2.4F,properties);
          this.burnTicks = burnTimeInTicks;
     }

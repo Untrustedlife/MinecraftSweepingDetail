@@ -358,6 +358,14 @@ public class BroomItem extends SwordItem  {
         /*DUST PAN LOGIC***********************************************************************************************/
         // Modify sweeps if the dustpan is held in the off-hand
         if (offHandItem.getItem() instanceof DustPanItem) {
+            // If the required sweeps is an odd number, we add +1 to make the dustpan's reduction feel 
+            // more intuitive. For odd numbers (e.g., 3), the dustpan would reduce the number of sweeps 
+            // by half (e.g., 3 -> 1 (Integer division is fun lol), instead of feeling like it should be 2). By rounding the odd number 
+            // up to the nearest even number (e.g., 3 -> 4), the reduction results in a fairer halving 
+            // (4 -> 2). This ensures a more balanced and predictable sweeping experience.
+            if (requiredSweeps % 2 != 0) {
+                requiredSweeps += 1;
+            }
             requiredSweeps = ((DustPanItem) offHandItem.getItem()).getModifiedSweeps(requiredSweeps, player);
             wasUsingDustpan = true;  // Mark that the dustpan was being used
         }
