@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      " WW",
+      " CW",
+      "S  "
+    ],
+    "key": {
+      "S": {
+        "item": "minecraft:stick"
+      },
+      "W": {
+        "item": "minecraft:iron_ingot"
+      },
+      "C": {
+        "item": "ulsmsd:cleaning_shard"
+      }
+    },
+    "result": {
+      "item": "ulsmsd:dust_pan",
+      "count": 1
+    }
+  }

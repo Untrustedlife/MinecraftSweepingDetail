@@ -25,5 +25,6 @@
     "item.ulsmsd.frost_sword":"Frost Sword",
     "block.ulsmsd.trash_block_tier_1":"Loose Litter",
     "block.ulsmsd.trash_block_tier_2":"Grouped Garbage",
-    "block.ulsmsd.trash_block_tier_3":"Compacted Crud"
+    "block.ulsmsd.trash_block_tier_3":"Compacted Crud",
+    "item.ulsmsd.dust_pan":"Dust Pan"
   }

@@ -7,6 +7,7 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -18,6 +19,8 @@ import untrustedlife.mods.minecraftsweepingdetail.UntrustedDiceRolling;
 import untrustedlife.mods.minecraftsweepingdetail.sounds.SweepingDetailSoundRegistry;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.math.Vector3f;
+
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -336,12 +339,16 @@ public class BroomItem extends SwordItem  {
         /*DUST PAN LOGIC***********************************************************************************************/
         // Check if the dustpan was equipped during sweeping and is now unequipped or changed mid-sweep
         ItemStack offHandItem = player.getOffhandItem();
-        if ((sweepingProgressMap.containsKey(lastSweptBlockPos) && wasUsingDustpan && (!(offHandItem.getItem() instanceof DustPanItem))) ||
-         (lastSweptBlockPos != null && !lastSweptBlockPos.equals(pos))) {
+        boolean unequippedDustpan = !(offHandItem.getItem() instanceof DustPanItem);
+        if (wasUsingDustpan && lastSweptBlockPos != null && ((sweepingProgressMap.containsKey(lastSweptBlockPos) && unequippedDustpan) ||
+         (lastSweptBlockPos != null && !lastSweptBlockPos.equals(pos)))) {
             Pair<Integer, BlockState> progressData = sweepingProgressMap.get(lastSweptBlockPos);
-            player.displayClientMessage(Component.literal("§4You dumped out the "+ new ItemStack(progressData.getSecond().getBlock().asItem()).getHoverName()+", resetting your progress!"), true);
+            Block block = progressData.getSecond().getBlock();
+            String reason = unequippedDustpan ?  "[Unequipped the dustpan]" : "[Switched blocks]";
+            Component blockName = Component.translatable(block.getDescriptionId()).withStyle(ChatFormatting.DARK_RED); 
+            player.displayClientMessage(Component.literal("§4You dumped the ").append(blockName).append("§4, resetting progress! ").append(Component.literal(reason).withStyle(ChatFormatting.GRAY)), true);
             sweepingProgressMap.clear();  // Clear all progress if sweeping is interrupted
-            lastSweptBlockPos = null;  // Reset the last swept block position
+            lastSweptBlockPos = null;
             wasUsingDustpan = false;  // Reset the dustpan usage tracker
             return;  // Exit early
         }
@@ -350,6 +357,7 @@ public class BroomItem extends SwordItem  {
         // Retrieve broom and block tiers
         int broomTier = getTierFromTool(context.getItemInHand());
         int blockTier = getTierFromBlock(currentState);
+        lastSweptBlockPos = pos;
 
         // Determine the required number of sweeps for this block and broom combo
         int baseSweeps = getSweepAmountFromBlock(currentState); 
@@ -360,7 +368,7 @@ public class BroomItem extends SwordItem  {
         if (offHandItem.getItem() instanceof DustPanItem) {
             // If the required sweeps is an odd number, we add +1 to make the dustpan's reduction feel 
             // more intuitive. For odd numbers (e.g., 3), the dustpan would reduce the number of sweeps 
-            // by half (e.g., 3 -> 1 (Integer division is fun lol), instead of feeling like it should be 2). By rounding the odd number 
+            // by half (e.g., 3 -> 1 (Integer division is fun lol), despite feeling like it should be 2). By rounding the odd number 
             // up to the nearest even number (e.g., 3 -> 4), the reduction results in a fairer halving 
             // (4 -> 2). This ensures a more balanced and predictable sweeping experience.
             if (requiredSweeps % 2 != 0) {
@@ -422,6 +430,7 @@ public class BroomItem extends SwordItem  {
             // Remove the block from the progress map once cleaned
             if (sweepingProgressMap.containsKey(pos)){
                 sweepingProgressMap.remove(pos);
+                lastSweptBlockPos=null;
             }
 
         }
