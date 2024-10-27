@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import untrustedlife.mods.minecraftsweepingdetail.UntrustedDiceRolling;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -21,7 +22,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -137,6 +137,12 @@ public class TrashBaseBlock extends Block {
     public boolean useShapeForLightOcclusion(BlockState state) {
         return true;  // Uses the shape for rendering light correctly
     }
+
+    //ALlow mobs to path onto my block
+    @Override
+    public boolean isPathfindable(BlockState p_56891_, BlockGetter p_56892_, BlockPos p_56893_, PathComputationType p_56894_) {
+        return true;
+     }
 
     /*This doesn't seem necessary at all?*/
     @Override
