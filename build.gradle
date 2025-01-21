@@ -6,7 +6,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
-version = 1.0
+version = "1.0"
 group = 'untrustedlife.mods.minecraftsweepingdetail'
 base {
     archivesName = 'minecraftsweepingdetail'
@@ -75,7 +75,12 @@ minecraft {
                 }
             }
         }
-
+        data {
+            workingDirectory project.file('run')
+            taskName = 'runData'
+            args '--mod', 'ulsmsd', '--all'
+            source sourceSets.main
+        }
         }
 }
 
@@ -146,10 +151,6 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Vendor'   : mod_authors,
                 'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
-    }
-
-    from('src/main/resources/kubejs') {
-        into 'kubejs/server_scripts' // Place the script in the correct directory within the mod
     }
     // This is the preferred method to reobfuscate your jar file
     finalizedBy 'reobfJar'
